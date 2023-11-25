@@ -23,6 +23,7 @@ import { useRef, useEffect } from "react";
 
 import { ThemeSwitch } from "./them-switcher";
 import { GithubIcon, TwitterIcon } from "./icon";
+import { UserButton } from "@clerk/nextjs";
 
 
 
@@ -127,7 +128,7 @@ export const Navbar = () => {
 					>
 						Login
 					</Button>
-
+					<UserButton />
 				</NavbarItem>
 			</NavbarContent>
 
