@@ -11,11 +11,11 @@ export default async function Home() {
 
   return (
     <>
-      <CreateAnAccount />
-      {/* <Hero />
+   
+      <Hero />
       <Services />
       <Why />
-      <CustomerReviews /> */}
+      <CustomerReviews />
     </>
   )
 }
