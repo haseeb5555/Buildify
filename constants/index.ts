@@ -1,5 +1,55 @@
 export type SiteConfig = typeof siteConfig;
 
+
+export const userProfiles = [
+	{
+	  banner:"/assets/images/user.png",
+	  name: "Alice Johnson",
+	  image: "/assets/images/user.png",
+	  username: "alice123",
+	  bio: "Passionate about creativity and technology. Web developer by day, musician by night.",
+
+
+	},
+	{
+		banner:"/assets/images/user.png",
+	  name: "Bob Smith",
+	  image: "/assets/images/user.png",
+	  username: "bobsmith87",
+	  bio: "Explorer of the digital world. Loves coding, gaming, and coffee."
+	},
+	{
+		banner:"/assets/images/user.png",
+	  name: "Charlie Brown",
+	  image: "/assets/images/user.png",
+	  username: "cbrown",
+	  bio: "Freelance designer with a keen eye for aesthetics. Turning ideas into visual delights."
+	},
+	{
+		banner:"/assets/images/user.png",
+		name: "Alice Johnson",
+		image: "/assets/images/user.png",
+		username: "alice123",
+		bio: "Passionate about creativity and technology. Web developer by day, musician by night.",
+  
+  
+	  },
+	  {
+		banner:"/assets/images/user.png",
+		name: "Bob Smith",
+		image: "/assets/images/user.png", 
+		username: "bobsmith87",
+		bio: "Explorer of the digital world. Loves coding, gaming, and coffee."
+	  },
+	  {
+		banner:"/assets/images/user.png",
+		name: "Charlie Brown",
+		image: "/assets/images/user.png",
+		username: "cbrown",
+		bio: "Freelance designer with a keen eye for aesthetics. Turning ideas into visual delights."
+	  }
+  ];
+  
 export const siteConfig = {
 	name: "Next.js + NextUI",
 	description: "Make beautiful websites regardless of your design experience.",
