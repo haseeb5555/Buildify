@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import '../globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Navbar } from '@/components/Navbar'
+import Image from 'next/image'
+import Topbar from '@/components/Topbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,10 +22,23 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className='dark' >
         <body className={inter.className}>
-
-
-          {children}
-
+              <Topbar />
+        <main className='flex flex-row px-20 py-12'>
+        
+          <section className='main-container'>
+             <div className='w-full '>
+               {children}
+             </div>
+          </section>
+       
+        <Image src="/assets/images/user.png"
+         alt=" constructor" 
+         width={300}
+          height={300}
+          className="object-cover rounded-lg h-60 mt-40"
+        />
+    
+         </main>
 
         </body>
       </html>

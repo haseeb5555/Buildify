@@ -21,7 +21,7 @@ const ContactCard = () => {
             </div>
        </div>
     </div>
-       <Button className='dark:bg-purple-700 bg-green-700'>
+       <Button  variant="ghost" className='dark:bg-purple-700 bg-green-700'>
      
              Contact Me
        </Button>

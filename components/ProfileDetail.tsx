@@ -121,14 +121,14 @@ const ProfileDetail: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col">
-        <h2 className="text-20 font-bold">Reviews</h2>
+        <h2 className="text-20 font-">Reviews</h2>
         <div className="flex flex-col items-center">
           {/* Review items */}
           <div className="m-10">
             <p className="text-16 font-bold">John Smith</p>
             <p className="text-16 mb-5">Rating: 5</p>
             <p className="text-16">Great work! Highly recommended.</p>
-          </div>
+          </div>bold
           <div className="m-10">
             <p className="text-16 font-bold">Jane Doe</p>
             <p className="text-16 mb-5">Rating: 4.5</p>
