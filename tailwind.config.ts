@@ -1,4 +1,4 @@
-import {nextui} from "@nextui-org/react";
+import { nextui } from "@nextui-org/react";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -8,7 +8,7 @@ module.exports = {
     './app/**/*.{ts,tsx,}',
     './src/**/*.{ts,tsx}',
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -179,7 +179,7 @@ module.exports = {
         "secondary-500": "#FFB620",
         blue: "#0095F6",
         "logout-btn": "#FF5A5A",
-        "navbar-menu":"rgba(16, 16, 18, 0.6)",
+        "navbar-menu": "rgba(16, 16, 18, 0.6)",
         "dark-1": "#000000",
         "dark-2": "#121417",
         "dark-3": "#101012",
@@ -189,7 +189,7 @@ module.exports = {
         "light-3": "#7878A3",
         "light-4": "#5C5C7B",
         "gray-1": "#697C89",
-        "slate-200":"#bfbfff",
+        "slate-200": "#bfbfff",
         glassmorphism: "rgba(16, 16, 18, 0.60)",
       },
       boxShadow: {
@@ -215,5 +215,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),nextui()],
+  plugins: [require("tailwindcss-animate"), nextui()],
 }
