@@ -12,7 +12,7 @@ type User={
 
 const ProfileCard = ({image,name,username,bio,banner}:User) => {
   return (
-    <div className="mt-4 relative flex flex-col justify-start w-[350px]  bg-slate-50 dark:bg-black/50 border px-1 rounded-xl">
+    <div className="mt-4 relative flex flex-col justify-start w-[350px]  bg-slate-50 dark:bg-black/50  px-1 rounded-xl">
     
       <Image
         src={banner}

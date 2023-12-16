@@ -52,7 +52,9 @@ const AddPostForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 flex flex-col justify-start gap-10">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 flex flex-col   gap-10">
+                <h1 className="font-bold text-[35px] -mb-6">Tell us what you need done</h1>
+                <p className="text-[16px] text-gray-1">Contact skilled freelancers within minutes. View profiles, ratings, portfolios and chat with them. Pay the freelancer only when you are 100% satisfied with their work</p>
                 <FormField
                     control={form.control}
                     name="title"

@@ -3,14 +3,14 @@ import React from "react";
 import ContactCard from "./ContactCard";
 import { userProfiles } from "@/constants";
 import ProfileCard from "./ProfileCard";
-import Caurosel from "./caurosel/Caurosel";
+
 
 const ProfileDetail: React.FC = () => {
   return (
-    <div className="w-full flex flex-col px-20 py-12 max-w-[1440px] gap-8 max-sm:px-4">
+    <div className="w-full flex flex-col  max-w-[1440px] gap-8 max-sm:px-4">
 
 
-      <div className="flex justify-start items-start w-full  max-sm:flex-col max-sm:items-center">
+      <div className="flex justify-start items-start w-full gap-8 max-sm:flex-col max-sm:items-center">
 
         <div className="w-[60%] flex flex-col gap-8 max-sm:w-full">
           <div className="flex items-center justify-between">
@@ -122,7 +122,6 @@ const ProfileDetail: React.FC = () => {
         </div>
       </div>
       <div className="flex flex-col">
-<<<<<<< HEAD
         <h2 className="text-20 font-">Reviews</h2>
         <div className="flex flex-col items-center">
           {/* Review items */}
@@ -136,15 +135,14 @@ const ProfileDetail: React.FC = () => {
             <p className="text-16 mb-5">Rating: 4.5</p>
             <p className="text-16">Good communication and quality work.</p>
           </div>
-=======
-        <Caurosel />
+
         <h2 className="text-20 font-bold">Reviews</h2>
         <div className="flex flex-col items-center">
 
 
->>>>>>> 00534a3cb0c995e27d8d6b0d4dee7d2f2f84a28b
         </div>
       </div>
+    </div>
     </div>
   );
 };

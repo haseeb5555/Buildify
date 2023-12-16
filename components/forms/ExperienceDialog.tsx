@@ -56,6 +56,11 @@ export function ExperienceDialog() {
         resolver: zodResolver(formSchema),
         defaultValues: {
           title: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+
         },
       })
      
@@ -181,10 +186,10 @@ export function ExperienceDialog() {
       </DialogContent>
     </Dialog>
         <div className="mt-12 flex justify-between ">
-          <Link href="/create-profile/title" >
+          <Link href="/create-profile/employment" >
        <Button  variant="outline">Back</Button>
         </Link>
-        <Link href="/create-profile/" >
+        <Link href="/create-profile/bio" >
 
         <Button type="submit" variant="outline">Next</Button>
         </Link>

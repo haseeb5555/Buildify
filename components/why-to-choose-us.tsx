@@ -4,9 +4,13 @@ import React from 'react'
 
 const Why = () => {
   return (
-    <section className='flex  justify-start items-start gap-4 px-20 py-12 '>
-      <div className='w-[65%] flex flex-col justify-start items-start gap-8 bg-slate-200 dark:bg-black px-12 py-6 dark:border rounded-lg shadow-2xl shadow-purple-700'>
-
+    <section className='flex justify-start items-start gap-4 px-20 py-12 '>
+      <div className='w-[65%] flex flex-col justify-start items-start gap-8 bg-slate-200 dark:bg-transparent backdrop-blur  dark:bg-black px-12 py-6 ring-1 ring-slate-900 rounded-lg'>
+        <Image src='/assets/blue-purple-1.svg' alt='hero'
+          width={1100}
+          height={500}
+          className='-z-10 absolute -top-28 right-0 '
+          />
         <h1 className='text-[50px] font-bold leading-[60px]'>Why business <br />turn to Tameer </h1>
         {
           whyChooseUs.map((item) => (
@@ -25,7 +29,7 @@ const Why = () => {
         }
 
       </div>
-      <div className='w-[35%] flex flex-col justify-start items-start gap-2  dark:bg-blue-900 bg-green-700 px-4 py-2 shadow-2xl rounded-lg h-[543px]'>
+      <div className='w-[35%] flex flex-col justify-start items-start gap-2  dark:bg-transparent bg-green-600 ring-1 ring-slate-900 px-4 py-2 shadow-2xl rounded-lg h-[543px]'>
         <h1 className='text-[30px] font-bold leading-[40px] mt-[172px] mb-4 text-white'>We’re
 the world’s <br/>work
 marketplace</h1>

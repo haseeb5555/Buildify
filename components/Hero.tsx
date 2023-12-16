@@ -5,6 +5,11 @@ import Image from 'next/image'
 export const Hero = () => {
   return (
     <section className='w-full flex justify-start items-start gap-10  px-20 py-12  mt-8 h-full max-sm:flex-col max-sm:px-8 '>
+      <Image src='/assets/looper-pattern.svg' alt='hero'
+        width={1100}
+        height={500}
+        className='-z-10 absolute top-[300px] right-0 dark:text-purple-700'
+      />
             <div className='w-1/2 flex flex-col items-start gap-4 max-sm:w-full'>
               <h1 className='text-[60px] font-bold text-blue-700 leading-[80px] max-sm:text-[40px] max-sm:leading-[60px] '> Explore best potiential 
                 <span className='text-purple-700'> clients and contractor

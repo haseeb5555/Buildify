@@ -119,7 +119,34 @@ export const siteConfig = {
 };
 
 
-
+export const sidebarLinks = [
+    {
+      imgURL: "/assets/home.svg",
+      route: "/",
+      label: "Home",
+    },
+    {
+      imgURL: "/assets/search.svg",
+      route: "/search",
+      label: "Search",
+    },
+    {
+      imgURL: "/assets/heart.svg",
+      route: "/activity",
+      label: "Activity",
+    },
+    {
+      imgURL: "/assets/create.svg",
+      route: "/add-project",
+      label: "Create Project",
+    },
+   
+    {
+      imgURL: "/assets/user.svg",
+      route: "/profiles",
+      label: "Constructor Profiles",
+    },
+  ];
 
 
 export const navMenuItems = [

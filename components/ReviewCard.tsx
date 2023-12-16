@@ -5,7 +5,7 @@ type Props ={
 } 
 const ReviewCard = ({imgURL,customerName ,rating,feedback}:Props) => {
   return (
-    <div className='flex justify-center items-center flex-col'>
+    <div className='flex justify-center items-center flex-col bg-transparent backdrop-blur-sm ring-1 ring-slate-900 px-4 py-4 rounded-lg'>
          <img src={imgURL} alt="customer" 
           className='rounded-full object-cover w-[120px] h-[120px]'
          />
