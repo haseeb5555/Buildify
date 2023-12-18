@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Footer = () => {
   const pathname = usePathname()
@@ -12,8 +13,8 @@ const Footer = () => {
   ]
 
   return (
-    <footer className='bg-white dark:bg-black flex-grow-0 px-20 max-sm:px-4'>
-
+    <footer className='relative bg-white dark:bg-black flex-grow-0 px-20 max-sm:px-4'>
+        
         <div className='border-t border-gray-200'>
           {pathsToMinimize.includes(pathname) ? null : (
             <div className='pb-8 pt-16'>
@@ -25,11 +26,25 @@ const Footer = () => {
 
           {pathsToMinimize.includes(pathname) ? null : (
             <div>
+              <Image
+                src='/assets/blue-purple-1.svg'
+                alt='logo'
+                 width={400}
+                  height={700}
+                className='absolute top-0 right-0 mx-auto' 
+              />
+                 <Image
+                src='/assets/blue-purple-1.svg'
+                alt='logo'
+                 width={400}
+                  height={700}
+                className='absolute top-0 left-0 mx-auto' 
+              />
               <div className='relative flex items-center px-6 py-6 sm:py-8 lg:mt-0'>
                 <div className='absolute inset-0 overflow-hidden rounded-lg'>
                   <div
                     aria-hidden='true'
-                    className='absolute bg-slate-200 dark:bg-gray-950 inset-0 bg-gradient-to-br bg-opacity-90'
+                    className='absolute  bg-transparent backdrop-blur border rounded-xl  border-slate-900 inset-0 bg-gradient-to-br bg-opacity-90'
                   />
                 </div>
 

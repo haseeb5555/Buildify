@@ -17,12 +17,22 @@ export const Hero = () => {
      <p className='text-[18px] text-slate-500 t'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
      <CustomButton text='Get Started' className='bg-purple-900 text-white rounded-3xl px-7 py-3 hover:bg-purple-700 ' />
             </div>
-            <Image src='/assets/images/bg.jpeg' alt='main'
-             width={500}
-             height={500}
-             className='rounded-3xl object-cover dark:shadow-lg dark:shadow-blue-700 shadow-lg shadow-cyan-600'
+            <span className="relative flex h-20 w-20">
+  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-900 ">
+   
+  <Image src='/assets/images/hammer.png' alt='main'
+            fill
+             className='dark:text-purple-700'
             
             />
+  </span>
+
+</span>
+          <Image src='/assets/images/building.png' alt='main'
+          width={400}
+          height={200}
+          className='animate-bounce'
+          />
 
     </section>
   )

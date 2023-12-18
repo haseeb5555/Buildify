@@ -8,8 +8,8 @@ const Why = () => {
       <div className='w-[65%] flex flex-col justify-start items-start gap-8 bg-slate-200 dark:bg-transparent backdrop-blur  dark:bg-black px-12 py-6 ring-1 ring-slate-900 rounded-lg'>
         <Image src='/assets/blue-purple-1.svg' alt='hero'
           width={1100}
-          height={500}
-          className='-z-10 absolute -top-28 right-0 '
+          height={1100}
+          className='-z-10 absolute left-48 -top-28 right-0 '
           />
         <h1 className='text-[50px] font-bold leading-[60px]'>Why business <br />turn to Tameer </h1>
         {
