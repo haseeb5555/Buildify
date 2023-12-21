@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Checkbox, Link, User, Chip, cn } from "@nextui-org/react";
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const CreateAnAccount = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -10,6 +10,7 @@ const CreateAnAccount = () => {
   const [text, setText] = useState("Create An Account");
   const route = useRouter()
 
+  
   return (
     <div className="flex justify-center items-center">
       <div className="flex gap-20 justify-center items-center flex-col p-20 border-1 rounded-lg shadow-lg shadow-purple-700">
@@ -33,7 +34,11 @@ const CreateAnAccount = () => {
               onValueChange={()=>{setIsSelected(true)
                                   setIsDisabled(false)
                }}
-              onClick={() => setText("Create An Account As Client")}
+              onClick={() => 
+                setText("Create An Account As Client")
+                
+              
+           }
             >
                <p>Create An Account as a client</p>
             </Checkbox>
@@ -64,11 +69,11 @@ const CreateAnAccount = () => {
         </div>
         <div className={`flex flex-col gap-4 justify-center items-center ${isDisabled?'cursor-not-allowed':null}`} >
 
-          <Button  className="w-full bg-purple-700 hover:bg-purple-600 " disabled={isDisabled} onClick={text==='Create An Account As Builder'?()=>route.push('/dasboard/welcome'):()=>route.push('/welcome')
+          <Button  className="w-full bg-purple-700 hover:bg-purple-600 " disabled={isDisabled} onClick={text==='Create An Account As Builder'?()=>route.push('/sign-up?as=builder'):()=>route.push('/sign-up?as=client')
         
         } >
             {text}
-          </Button>
+          </Button >
           <p className="flex gap-1 m-0">
             Already have an account?
             <Link href="/sign-in" className="hover:underline cursor-pointer">Login</Link>

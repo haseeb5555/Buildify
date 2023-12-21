@@ -1,6 +1,63 @@
 export type SiteConfig = typeof siteConfig;
 
-
+export const buildingReviews = [
+	{
+	  title: "A Four Floor Building",
+	  price: "$4000",
+	  reviewContent:
+		"Our experience with Faheem Don Constructors has been outstanding! The construction team demonstrated exceptional skill and professionalism. The attention to detail in every aspect of the project, from planning to execution, was remarkable. We highly recommend Faheem Don Constructors for their top-notch construction services.",
+	  rating: 4.5,
+	  image: "/assets/images/user.png",
+	  name: "Alice Johnson",
+	  date: "Feb 2021",
+	},
+	{
+	  title: "Modern Apartment Complex",
+	  price: "$6000",
+	  reviewContent:
+		"We are thrilled with the Modern Apartment Complex built by Urban Builders. The architectural design is innovative, and the construction quality is superb. Urban Builders exceeded our expectations, delivering a luxurious living space. We highly endorse their services.",
+	  rating: 4.8,
+	  image: "/assets/images/user.png",
+	  name: "Bob Smith",
+	  date: "Jan 2021",
+	},
+	{
+	  title: "Commercial Office Tower",
+	  price: "$10,000",
+	  reviewContent:
+		"XYZ Construction Group did an excellent job constructing our commercial office tower. Their project management skills ensured a smooth construction process. The office spaces are well-designed and functional. We are extremely satisfied with the outcome.",
+	  rating: 4.2,
+	  image: "/assets/images/user.png",
+	  name: "Charlie Brown",
+	  date: "Dec 2020",
+	},
+	// Add more building reviews as needed
+  ];
+  export const posts= [
+	{
+	  profile: {
+		name: "John Doe",
+		username: "john_doe",
+		imageSrc: 'assets/images/user.png',
+	  },
+	  tweet: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod ligula vel justo ullamcorper, vel fringilla justo finibus.",
+	  likes: 123,
+	  retweets: 45,
+	  timestamp: "10:30 AM · Sep 1, 2023",
+	},
+	{
+	  profile: {
+		name: "Jane Smith",
+		username: "jane_smith",
+		imageSrc: 'assets/images/user.png',
+	  },
+	  tweet: "Sed auctor ultrices turpis, nec bibendum elit. Vestibulum vel urna nec augue feugiat sodales.",
+	  likes: 210,
+	  retweets: 87,
+	  timestamp: "2:45 PM · Sep 1, 2023",
+	},
+	// Add more dummy data as needed
+  ];
 export const userProfiles = [
 	{
 		banner: "/assets/images/user.png",

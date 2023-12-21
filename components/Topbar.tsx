@@ -32,7 +32,7 @@ const Topbar = async() => {
          </SignedIn>
          
         </div>
-         {!user && <Link href='/sign-in'><Button variant='outline'>Sign In/Sign Up</Button></Link>}
+        
    
          <UserButton  afterSignOutUrl='/sign-in'/>
         

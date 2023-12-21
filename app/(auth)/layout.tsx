@@ -31,12 +31,7 @@ export default function RootLayout({
              </div>
           </section>
        
-        <Image src="/assets/images/user.png"
-         alt=" constructor" 
-         width={300}
-          height={300}
-          className="object-cover rounded-lg h-60 mt-40"
-        />
+      
     
          </main>
 

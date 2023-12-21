@@ -1,7 +1,11 @@
 import CreateAnAccount from "@/components/CreateAnAccount";
 
 const GetStartedPage = () => {
-  return <CreateAnAccount />;
+  return(
+
+    <CreateAnAccount />
+  )
 };
+
 
 export default GetStartedPage;

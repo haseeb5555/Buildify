@@ -27,7 +27,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { Textarea } from "../ui/textarea"
+import Image from "next/image"
+
 
 
 const formSchema = z.object({
@@ -42,24 +43,22 @@ const formSchema = z.object({
     startDate: z.string().min(2, {
         message: "Start date must be required.",
     }),
-    endDate: z.string().min(2, {
-        message: "End date must be required.",
-    }),
-    description: z.string().min(2, {
-        message: "Description must be required.",
+    
+    image: z.string().min(2, {
+        message: "Image of certificate must be required.",
     }),
  
 
 })
-export function ExperienceDialog() {
+    const Certification=()=> {
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
           title: "",
           company: "",
           startDate: "",
-          endDate: "",
-          description: "",
+           image: "",
 
         },
       })
@@ -73,7 +72,7 @@ export function ExperienceDialog() {
   return (
     <>
     <Dialog>
-        <h1 className="text-[28px] font-bold ">Add Experience</h1>
+        <h1 className="text-[28px] font-bold ">Add Certification</h1>
         <p className="text-gray-1 text-[16px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet ex rem voluptas fugit? Nesciunt dolorem repellat</p>
              
       <DialogTrigger asChild className="px-78 py-28 w-full mt-2">
@@ -87,9 +86,9 @@ export function ExperienceDialog() {
       </DialogTrigger>
       <DialogContent className="w-fullsm:max-w-[425px] ">
         <DialogHeader>
-          <DialogTitle>Add Experience</DialogTitle>
+          <DialogTitle>Add Certification </DialogTitle>
           <DialogDescription className="text-gray-1">
-          Add Experince to grab the attention of recruiters
+          Add certification to grab the attention of recruiters
           </DialogDescription>
         </DialogHeader>
         <Form {...form} >
@@ -114,7 +113,7 @@ export function ExperienceDialog() {
           name="company"
           render={({ field }) => (
             <FormItem className="flex flex-col gap-2">
-            <FormLabel className="text-[16px] font-bold">Company</FormLabel>
+            <FormLabel className="text-[16px] font-bold">Intstitue</FormLabel>
               <FormControl className="">
                 <Input placeholder="e.g:Microsoft" {...field}
                  className="account-form_input"
@@ -124,33 +123,16 @@ export function ExperienceDialog() {
             </FormItem>
           )}
         />
-        <div className="w-full justify-between flex gap-2">
-
+      
           <FormField
           control={form.control}
           name="startDate"
           render={({ field }) => (
             <FormItem className="flex flex-col gap-2">
-            <FormLabel className="text-[16px] font-bold">start date</FormLabel>
+            <FormLabel className="text-[16px] font-bold">Issue Date</FormLabel>
               <FormControl className="">
                 <Input placeholder="start date" {...field}
-                 className="w-[230px] account-form_input"
-                 type="date"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-         <FormField
-          control={form.control}
-          name="endDate"
-          render={({ field }) => (
-            <FormItem className="flex flex-col gap-2">
-            <FormLabel className="text-[16px] font-bold">end date</FormLabel>
-              <FormControl className="">
-                <Input placeholder="end date" {...field}
-                 className="w-[230px] account-form_input"
+                 className="account-form_input"
                  type="date"
                 />
               </FormControl>
@@ -159,23 +141,50 @@ export function ExperienceDialog() {
           )}
         />
 
-        </div>
-<FormField
+       <FormField
           control={form.control}
-          name="description"
+          name="image"
           render={({ field }) => (
-            <FormItem className="flex flex-col gap-2 ">
-            <FormLabel className="text-[16px] font-bold">Description</FormLabel>
-              <FormControl className="">
-                <Textarea placeholder="Discription" {...field}
-                 className=" account-form_input "
-                  rows={3}
+            <FormItem className="flex items-center gap-4">
+              <FormLabel className="">{
+
+                field.value&&(
+                  <Image
+                   src={field.value}
+                   alt="image"
+                   width={96}
+                   height={96}
+                   priority
+                   className="rounded-lg object-contain"
+                  />
+                // ):(
+
+                //   <Image
+                //   src="/assets/profile.svg"
+                //   alt="profile_photo"
+                //   width={24}
+                //   height={24}
+            
+                //   className=" object-contain"
+                //  />
+                )
+          }
+          </FormLabel>
+              <FormControl className="flex-1 text-base-semibold ">
+                <Input
+                type="file"
+                accept="image/*"
+                placeholder="Upload a photo"
+                className=""
+                // onChange={(e)=>handleImage(e,field.onChange)}
+                
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
-        />
+        />  
+             
+
         
      
         <DialogFooter>
@@ -189,7 +198,7 @@ export function ExperienceDialog() {
           <Link href="/create-profile/employment" >
        <Button  variant="outline">Back</Button>
         </Link>
-        <Link href="/create-profile/ntn" >
+        <Link href="/create-profile/bio" >
 
         <Button type="submit" variant="outline">Next</Button>
         </Link>
@@ -197,3 +206,4 @@ export function ExperienceDialog() {
         </>
   )
 }
+export default Certification

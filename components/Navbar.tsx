@@ -107,10 +107,9 @@ export const Navbar = () => {
 				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
 				<NavbarItem className="hidden md:flex gap-2">
 					<Button
-						isExternal
 						as={Link}
 						className="text-sm font-normal text-default-600 bg-green-500 text-black-200  dark:bg-purple-700"
-						href={siteConfig.links.sponsor}
+						href='/get-started'
 						// startContent={<HeartFilledIcon className="text-danger" />}
 						variant="flat"
 					>
@@ -119,10 +118,9 @@ export const Navbar = () => {
 
 
 					<Button
-						isExternal
 						as={Link}
 						className="text-sm font-normal text-default-600 bg-white-800  hover:bg-slate-200 text-inherit dark:bg-blue-700"
-						href={siteConfig.links.sponsor}
+						href='/login'
 						// startContent={<HeartFilledIcon className="text-danger" />}
 						variant="flat"
 					>
