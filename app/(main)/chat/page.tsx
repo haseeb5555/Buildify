@@ -33,7 +33,7 @@ export default function Component() {
             <AvatarImage src="/assets/images/user.png" />
           </Avatar>
           <div className="flex flex-col text-sm">
-            <p className="px-6 py-3 rounded-tl-lg rounded-tr-lg rounded-br-lg ring-1 text-gray-800">
+            <p className="px-6 py-3 rounded-tl-lg rounded-tr-lg rounded-br-lg ring-1 ">
               Sure, I'd be happy to help! What's your homework about?
             </p>
             <p className="text-xs text-gray-500 mt-1">9:00 AM</p>

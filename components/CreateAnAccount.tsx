@@ -71,7 +71,7 @@ const CreateAnAccount = () => {
         </div>
         <div className={`flex flex-col gap-4 justify-center items-center ${isDisabled?'cursor-not-allowed':null}`} >
 
-          <Button  className="w-full bg-purple-700 hover:bg-purple-600 " disabled={isDisabled} onClick={text==='Create An Account As Builder'?()=>route.push('/sign-up?as=builder'):()=>route.push('/sign-up?as=client')
+          <Button  className="w-full bg-purple-700 hover:bg-purple-600 " disabled={isDisabled} onClick={text==='Create An Account As Builder'?()=>route.push('/sign-in?as=builder'):()=>route.push('/sign-in?as=client')
         
         } >
             {text}

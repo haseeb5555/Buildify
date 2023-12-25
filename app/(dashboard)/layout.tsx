@@ -39,13 +39,7 @@ export default function RootLayout({
               />
 
                {children}
-               <Image
-               src='https://64.media.tumblr.com/ef4a3ce5dd7ba03cea2529629f1a0092/3d2fd96301d49e44-51/s640x960/dd707453c200cafb6fa2a548cf86c07ae0bfa768.gifv'
-                alt='bg'
-                width={940}
-                height={400}
-                className='-z-20 fixed bottom-0 -left-28 transform rotate-180 opacity-40   '
-                />
+            
              </div>
           </section>
 

@@ -40,7 +40,9 @@ export const buildingReviews = [
 		username: "john_doe",
 		imageSrc: 'assets/images/user.png',
 	  },
-	  tweet: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod ligula vel justo ullamcorper, vel fringilla justo finibus.",
+	  tweet: `
+	  🏗️ Freelance Building Constructor: Transform your vision into reality with my expertise. From personalized approaches to transparent communication, expect top-notch craftsmanship, on-time delivery, and budget-friendly solutions. Let's build something amazing! 🏡🔨
+	  `,
 	  likes: 123,
 	  retweets: 45,
 	  timestamp: "10:30 AM · Sep 1, 2023",
@@ -51,7 +53,7 @@ export const buildingReviews = [
 		username: "jane_smith",
 		imageSrc: 'assets/images/user.png',
 	  },
-	  tweet: "Sed auctor ultrices turpis, nec bibendum elit. Vestibulum vel urna nec augue feugiat sodales.",
+	  tweet: `🏗️ Freelance Building Constructor: Transform your vision into reality with my expertise. From personalized approaches to transparent communication, expect top-notch craftsmanship, on-time delivery, and budget-friendly solutions. Let's build something amazing! 🏡🔨 `,
 	  likes: 210,
 	  retweets: 87,
 	  timestamp: "2:45 PM · Sep 1, 2023",
@@ -111,26 +113,7 @@ export const siteConfig = {
 	name: "Next.js + NextUI",
 	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
-		{
-			label: "Home",
-			href: "/",
-		},
-		{
-			label: "Docs",
-			href: "/docs",
-		},
-		{
-			label: "Pricing",
-			href: "/pricing",
-		},
-		{
-			label: "Blog",
-			href: "/blog",
-		},
-		{
-			label: "About",
-			href: "/about",
-		}
+		
 	],
 	navMenuItems: [
 		{

@@ -106,7 +106,7 @@ const ProfileDetail: React.FC = () => {
       </div>
       <div className="flex flex-col">
         <h2 className="text-20 font-bold">My Projects</h2>
-        <div className=" flex justify-center flex-wrap items-center gap-2">
+        <div className=" flex  flex-wrap gap-20 max-sm:gap-2">
           {
             userProfiles.map((profile, index) => (
               <ProfileCard key={index}
@@ -169,7 +169,7 @@ const ProfileDetail: React.FC = () => {
       </div>
     ))}
   </div>
-);
+
 
 
 

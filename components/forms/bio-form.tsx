@@ -65,7 +65,7 @@ Help people get to know you at a glance. What work do you do best? Tell them cle
           <Link href="/create-profile/title" >
        <Button  variant="outline">Back</Button>
         </Link>
-        <Link href="/create-profile/" >
+        <Link href="/profileDetail" >
 
         <Button type="submit" variant="outline">Next</Button>
         </Link>

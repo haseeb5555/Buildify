@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Button } from './ui/button'
+import Link from 'next/link'
 const ContactCard = () => {
   return (
     <div className='mt-40 w-full flex flex-col gap-4 shadow-lg border px-8 py-4 '>
@@ -22,10 +23,12 @@ const ContactCard = () => {
             </div>
        </div>
     </div>
-       <Button  variant="ghost" className='dark:bg-purple-700 bg-green-700'>
+    <Link href='/chat' className='w-full'>
+       <Button  variant="ghost" className='w-full dark:bg-purple-700 bg-green-700'>
      
              Contact Me
        </Button>
+       </Link>
 
       
     
