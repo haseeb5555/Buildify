@@ -19,7 +19,7 @@ const Footer = () => {
           {pathsToMinimize.includes(pathname) ? null : (
             <div className='pb-8 pt-16'>
               <div className='flex justify-center'>
-               Tameer.Pk
+               Buildify
               </div>
             </div>
           )}

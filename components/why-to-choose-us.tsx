@@ -11,7 +11,7 @@ const Why = () => {
           height={1100}
           className='-z-10 absolute -top-28 right-0 '
           />
-        <h1 className='text-[50px] font-bold leading-[60px]'>Why business <br />turn to Tameer </h1>
+        <h1 className='text-[50px] font-bold leading-[60px]'>Why business <br />turn to Buildify</h1>
         {
           whyChooseUs.map((item) => (
             <div key={item.title}
