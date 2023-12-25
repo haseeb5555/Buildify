@@ -7,12 +7,14 @@ export default function Page() {
     const searchParams = useSearchParams()
     const router = useRouter()
     const isBuilder= searchParams.get('as') === 'builder'
+    console.log(isBuilder)
 
  
     return (
         <div className="flex justify-center items-center min-h-screen">
             <SignIn 
-            afterSignInUrl={isBuilder?'/create-profile/title':'/create-profil/title'}
+            afterSignInUrl={isBuilder ?'/create-profile/title':'/add-project'}
+        
             />
         </div>)
 }

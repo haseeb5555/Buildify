@@ -23,37 +23,19 @@ import { useRef, useEffect } from "react";
 
 import { ThemeSwitch } from "./them-switcher";
 import { GithubIcon, TwitterIcon } from "./icon";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useAuth } from "@clerk/nextjs";
+
 
 
 
 
 export const Navbar = () => {
+	const {userId}= useAuth();
 	const ref = useRef<HTMLInputElement | undefined>()
 	useEffect(() => {
 		ref.current?.focus()
 	}, [])
-	const searchInput = (
-		<Input
-			ref={ref}
-			aria-label="Search"
-			classNames={{
-				inputWrapper: "bg-default-100",
-				input: "text-sm",
-			}}
-			endContent={
-				<Kbd className="hidden lg:inline-block" keys={["command"]}>
-					K
-				</Kbd>
-			}
-			labelPlacement="outside"
-			placeholder="Search..."
-
-			type="search"
-			// when the user clicks on the search icon, the input will be focused
-			onClick={() => ref.current?.focus()}
-		/>
-	);
+	
 
 	return (
 		<NextUINavbar maxWidth="xl" position='sticky' className="border-b z-50 shadow-lg shadow-cyan-600 dark:shadow-lg dark:shadow-blue-700 rounded-lg">
@@ -104,28 +86,34 @@ export const Navbar = () => {
 					</Link>
 					<ThemeSwitch />
 				</NavbarItem>
-				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+
 				<NavbarItem className="hidden md:flex gap-2">
-					<Button
-						as={Link}
-						className="text-sm font-normal text-default-600 bg-green-500 text-black-200  dark:bg-purple-700"
-						href='/get-started'
-						// startContent={<HeartFilledIcon className="text-danger" />}
-						variant="flat"
-					>
-						SignUp
-					</Button>
+					{
+						!userId && (
+							<>
+								<Button
+									as={Link}
+									className="text-sm font-normal text-default-600 bg-green-500 text-black-200  dark:bg-purple-700"
+									href="/get-started"
+									// startContent={<HeartFilledIcon className="text-danger" />}
+									variant="flat"
+								>
+									SignUp
+								</Button>
 
-
-					<Button
-						as={Link}
-						className="text-sm font-normal text-default-600 bg-white-800  hover:bg-slate-200 text-inherit dark:bg-blue-700"
-						href='/login'
-						// startContent={<HeartFilledIcon className="text-danger" />}
-						variant="flat"
-					>
-						Login
-					</Button>
+								<Button
+									as={Link}
+									className="text-sm font-normal text-default-600 bg-white-800  hover:bg-slate-200 text-inherit dark:bg-blue-700"
+									href="/login"
+									// startContent={<HeartFilledIcon className="text-danger" />}
+									variant="flat"
+								>
+									Login
+								</Button>
+							</>
+						)
+					}
+					
 					<UserButton />
 				</NavbarItem>
 			</NavbarContent>
@@ -139,7 +127,7 @@ export const Navbar = () => {
 			</NavbarContent>
 
 			<NavbarMenu >
-				{searchInput}
+				
 				<div className="mx-4 mt-2 flex flex-col gap-2">
 					{siteConfig.navMenuItems.map((item, index) => (
 						<NavbarMenuItem key={`${item}-${index}`}>

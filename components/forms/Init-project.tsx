@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dialog"
 
 import { Label } from "@/components/ui/label"
+import Link from "next/link";
 
 
 
@@ -65,7 +66,7 @@ const InitProject= () => {
 
     const onSubmit = async (values: z.infer<typeof PostValidation>) => {
         
-        router.push('/projects');
+        router.push('/room');
     };
 
     return (
@@ -181,10 +182,11 @@ const InitProject= () => {
                     )}
                 />
               
-                
+             
                 <Button type="submit" className="dark:bg-primary-500 bg-slate-200 text-black dark:text-light-1">
                     Initiate
                 </Button>
+                
             </form>
         </Form>
     );

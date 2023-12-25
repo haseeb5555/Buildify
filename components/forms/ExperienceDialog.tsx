@@ -28,6 +28,7 @@ import {
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { Textarea } from "../ui/textarea"
+import { ScrollArea } from "../ui/scroll-area"
 
 
 const formSchema = z.object({
@@ -72,6 +73,7 @@ export function ExperienceDialog() {
 
   return (
     <>
+   
     <Dialog>
         <h1 className="text-[28px] font-bold ">Add Experience</h1>
         <p className="text-gray-1 text-[16px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet ex rem voluptas fugit? Nesciunt dolorem repellat</p>
@@ -85,7 +87,8 @@ export function ExperienceDialog() {
 </svg>
 </Button>
       </DialogTrigger>
-      <DialogContent className="w-fullsm:max-w-[425px] ">
+    
+      <DialogContent className="w-full">
         <DialogHeader>
           <DialogTitle>Add Experience</DialogTitle>
           <DialogDescription className="text-gray-1">
@@ -134,7 +137,7 @@ export function ExperienceDialog() {
             <FormLabel className="text-[16px] font-bold">start date</FormLabel>
               <FormControl className="">
                 <Input placeholder="start date" {...field}
-                 className="w-[230px] account-form_input"
+                 className="w-[230px] account-form_input max-sm:w-[150px]"
                  type="date"
                 />
               </FormControl>
@@ -150,7 +153,7 @@ export function ExperienceDialog() {
             <FormLabel className="text-[16px] font-bold">end date</FormLabel>
               <FormControl className="">
                 <Input placeholder="end date" {...field}
-                 className="w-[230px] account-form_input"
+                 className="w-full account-form_input "
                  type="date"
                 />
               </FormControl>
@@ -168,7 +171,7 @@ export function ExperienceDialog() {
             <FormLabel className="text-[16px] font-bold">Description</FormLabel>
               <FormControl className="">
                 <Textarea placeholder="Discription" {...field}
-                 className=" account-form_input "
+                 className=" w-full account-form_input "
                   rows={3}
                 />
               </FormControl>
@@ -184,6 +187,7 @@ export function ExperienceDialog() {
       </form>
     </Form>
       </DialogContent>
+
     </Dialog>
         <div className="mt-12 flex justify-between ">
           <Link href="/create-profile/employment" >

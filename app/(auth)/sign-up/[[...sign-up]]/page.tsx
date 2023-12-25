@@ -13,8 +13,9 @@ export default function Page() {
         <div className="flex justify-center items-center min-h-screen">
 
           
-            <SignUp afterSignInUrl={
+            <SignUp afterSignUpUrl={
                 isBuilder?'/sign-in?as=builder':'/sign-in?as=client'
+
             }/>
 
 

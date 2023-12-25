@@ -1,5 +1,6 @@
 import { nextui } from "@nextui-org/react";
 /** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -7,7 +8,8 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx,}',
     './src/**/*.{ts,tsx}',
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     container: {
@@ -175,6 +177,45 @@ module.exports = {
     },
     extend: {
       colors: {
+        tremor: {
+          brand: {
+            faint: colors.purple[50],
+            muted: colors.purple[200],
+            subtle: colors.purple[400],
+            DEFAULT: colors.purple[500],
+            emphasis: colors.purple[700],
+            inverted: colors.white,
+          },
+         
+       
+          content: {
+            subtle: colors.gray[400],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[700],
+            strong: colors.gray[900],
+            inverted: colors.white,
+          },
+        },
+        // dark mode
+        "dark-tremor": {
+          brand: {
+            faint: "#0B1229",
+            muted: colors.purple[950],
+            subtle: colors.purple[800],
+            DEFAULT: colors.purple[500],
+            emphasis: colors.purple[400],
+            inverted: colors.purple[950],
+          },
+        
+          content: {
+            subtle: colors.gray[600],
+            DEFAULT: colors.gray[500],
+            emphasis: colors.gray[200],
+            strong: colors.gray[50],
+            inverted: colors.gray[950],
+          },
+        },
+
         "primary-500": "#877EFF",
         "secondary-500": "#FFB620",
         blue: "#0095F6",
@@ -215,5 +256,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), nextui()],
+  plugins: [require("daisyui"),require("tailwindcss-animate"), nextui()],
 }

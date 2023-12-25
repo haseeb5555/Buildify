@@ -23,7 +23,7 @@ export default function RootLayout({
       <html lang="en" className='dark' >
         <body className={inter.className}>
               <Topbar />
-        <main className='flex flex-row px-20 py-12'>
+        <main className='flex flex-row px-20 py-12 max-sm:px-4'>
         
           <section className='main-container'>
              <div className='w-full '>

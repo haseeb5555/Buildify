@@ -9,7 +9,7 @@ const Why = () => {
         <Image src='/assets/blue-purple-1.svg' alt='hero'
           width={1100}
           height={1100}
-          className='-z-10 absolute left-48 -top-28 right-0 '
+          className='-z-10 absolute -top-28 right-0 '
           />
         <h1 className='text-[50px] font-bold leading-[60px]'>Why business <br />turn to Tameer </h1>
         {

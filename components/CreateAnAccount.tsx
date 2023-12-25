@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { Checkbox, Link, User, Chip, cn } from "@nextui-org/react";
+import { Checkbox, Link, cn } from "@nextui-org/react";
 import { Button } from "./ui/button";
 import { redirect, useRouter } from "next/navigation";
+import { Separator } from "./ui/separator";
 
 const CreateAnAccount = () => {
   const [isSelected, setIsSelected] = useState(false);
@@ -13,11 +14,12 @@ const CreateAnAccount = () => {
   
   return (
     <div className="flex justify-center items-center">
-      <div className="flex gap-20 justify-center items-center flex-col p-20 border-1 rounded-lg shadow-lg shadow-purple-700">
+      <div className="flex  justify-center items-center flex-col  gap-20 p-20 border-1 rounded-lg shadow-lg shadow-purple-700">
         <h2 className="font-bold  text-[36px]   text-center max-sm:text-[40px] max-lg:text-[46px]">
-          Join As Client or Builder
+          Join As 
         </h2>
-        <div className="flex gap-8 justify-center items-center">
+        <Separator className="my-4 bg-gray-1 w-28 -mt-20" />
+        <div className="flex gap-8 justify-center items-center ">
           <div>
             <Checkbox
            
@@ -25,7 +27,7 @@ const CreateAnAccount = () => {
                 base: cn(
                   "inline-flex w-full max-w-md bg-transparent border",
                   "hover:bg-content2 items-center justify-start",
-                  "cursor-pointer rounded-lg gap-2 p-4 border-2 border-transparent",
+                  "cursor-pointer rounded-lg gap-2 px-4 py-12 border-2 border-transparent",
                   "data-[selected=true]:border-primary"
                 ),
                 label: "w-full",
@@ -49,8 +51,8 @@ const CreateAnAccount = () => {
               classNames={{
                 base: cn(
                   "inline-flex w-full max-w-md bg-transparent",
-                  "hover:+ items-center justify-start",
-                  "cursor-pointer rounded-lg gap-2 p-4 border-2 border-transparent",
+                    
+                  "cursor-pointer rounded-lg gap-2 px-4 py-12 a border-2 border-transparent" ,
                   "data-[selected=true]:border-primary"
                 ),
                 label: "w-full",

@@ -175,11 +175,35 @@ export const siteConfig = {
 	},
 };
 
+export const C_sidebarLinks = [
+ 
+    {
+      imgURL: "/assets/heart.svg",
+      route: "/chat",
+      label: "Chat",
+    },
+    {
+      imgURL: "/assets/create.svg",
+      route: "/init-project",
+      label: "Init Window",
+    },
+   
+    {
+      imgURL: "/assets/user.svg",
+      route: "/constructor-profiles",
+      label: "Constructor Profiles",
+    },
+	{
+		imgURL: "/assets/user.svg",
+		route: "/jobs",
+		label: "Jobs"
+	  },
+  ];
 
 export const sidebarLinks = [
     {
       imgURL: "/assets/home.svg",
-      route: "/",
+      route: "/posts",
       label: "Home",
     },
     {
@@ -189,8 +213,8 @@ export const sidebarLinks = [
     },
     {
       imgURL: "/assets/heart.svg",
-      route: "/activity",
-      label: "Activity",
+      route: "/chat",
+      label: "Chat",
     },
     {
       imgURL: "/assets/create.svg",
