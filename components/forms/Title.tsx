@@ -13,8 +13,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Image from "next/image"
-import Link from "next/link"
+import { useLocalStorage } from "@/hooks/use-local-storage"
+import { useRouter } from "next/navigation"
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -23,6 +23,9 @@ const formSchema = z.object({
 })
 
 export function Title() {
+  const router = useRouter()
+
+  const [title,setTitle] = useLocalStorage('title', '')
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -32,7 +35,8 @@ export function Title() {
      
  
       function onSubmit(values: z.infer<typeof formSchema>) {
-            console.log(values)
+             setTitle(values.title)
+              router.push('/create-profile/employment')
       }
 
 
@@ -43,13 +47,17 @@ export function Title() {
         <FormField
           control={form.control}
           name="title"
+          
           render={({ field }) => (
             <FormItem className="flex flex-col gap-4">
                  <h1 className="text-[50px] font-bold leading-[50px]">Tell the World what you want to do.</h1>
                  <p className="text-gray-1 text-[16px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet ex rem voluptas fugit? Nesciunt dolorem repellat</p>
               <FormControl className="">
                 <Input placeholder="Constructor" {...field}
-                 className="account-form_input"
+                 className="account-form_input "
+                 
+
+
                 />
               </FormControl>
               <FormMessage />
@@ -58,9 +66,9 @@ export function Title() {
         />
         <div className="flex justify-between ">
         <Button  variant="outline">Back</Button>
-        <Link href="/create-profile/employment" >
+    
         <Button type="submit" variant="outline">Next</Button>
-        </Link>
+      
         </div>
       </form>
     </Form>

@@ -29,6 +29,9 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { Textarea } from "../ui/textarea"
 import { ScrollArea } from "../ui/scroll-area"
+import { useLocalStorage } from "@/hooks/use-local-storage"
+import { set } from "mongoose"
+import { useRouter } from "next/navigation"
 
 
 const formSchema = z.object({
@@ -53,6 +56,15 @@ const formSchema = z.object({
 
 })
 export function ExperienceDialog() {
+     const router = useRouter()
+     const [data, setData] = useLocalStorage('experience', {
+        title: "",
+        company: "",
+        startDate: "",
+        endDate: "",
+        description: "",
+      
+     })
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -67,7 +79,12 @@ export function ExperienceDialog() {
      
  
       function onSubmit(values: z.infer<typeof formSchema>) {
+            setData({
+                ...data,
+                ...values,
+            })
             console.log(values)
+            router.push('/create-profile/ntn')
       }
 
 
@@ -182,7 +199,7 @@ export function ExperienceDialog() {
         
      
         <DialogFooter>
-        <Button  variant="outline" className="mt-4">save</Button>
+        <Button  variant="outline" className="mt-4" type="submit">save</Button>
         </DialogFooter>
       </form>
     </Form>
@@ -193,10 +210,10 @@ export function ExperienceDialog() {
           <Link href="/create-profile/employment" >
        <Button  variant="outline">Back</Button>
         </Link>
-        <Link href="/create-profile/ntn" >
+    
 
         <Button type="submit" variant="outline">Next</Button>
-        </Link>
+
         </div>
         </>
   )

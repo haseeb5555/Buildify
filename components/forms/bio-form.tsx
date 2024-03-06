@@ -15,6 +15,8 @@ import {
 import { Textarea } from '../ui/textarea'
 import Link from 'next/link'
 import { Button } from '../ui/button'
+import { useRouter } from 'next/navigation'
+import { useLocalStorage } from '@/hooks/use-local-storage'
 
 const formSchema = z.object({
     bio: z.string().min(2, {
@@ -22,6 +24,9 @@ const formSchema = z.object({
     }),
 })
 const Bio = () => {
+  const router = useRouter()
+
+  const [bio, setBio] = useLocalStorage('bio', '')
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -30,8 +35,12 @@ const Bio = () => {
       })
      
  
-      function onSubmit(values: z.infer<typeof formSchema>) {
-            console.log(values)
+      function onSubmit(values: z.infer<typeof formSchema>) {4
+        
+          const title = localStorage.getItem('title')
+            setBio(values.bio)
+            console.log(values,title)
+            router.push('')
       }
   return (
     <>
@@ -58,18 +67,18 @@ Help people get to know you at a glance. What work do you do best? Tell them cle
         />
         
      
-      </form>
-    </Form>
       
         <div className="mt-12 flex justify-between ">
           <Link href="/create-profile/title" >
        <Button  variant="outline">Back</Button>
         </Link>
-        <Link href="/profileDetail" >
+       
 
         <Button type="submit" variant="outline">Next</Button>
-        </Link>
+     
         </div>
+      </form>
+    </Form>
         </>
   )
 }

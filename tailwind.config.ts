@@ -12,6 +12,7 @@ module.exports = {
      "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    
     container: {
       center: true,
       padding: "2rem",
@@ -177,6 +178,7 @@ module.exports = {
     },
     extend: {
       colors: {
+      
         tremor: {
           brand: {
             faint: colors.purple[50],
@@ -236,6 +238,7 @@ module.exports = {
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
         "groups-sidebar": "-30px 0px 60px 0px rgba(28, 28, 31, 0.50)",
+          "neon":"0 0 0 20px theme(colors.purple.950)"
       },
       screens: {
         xs: "400px",

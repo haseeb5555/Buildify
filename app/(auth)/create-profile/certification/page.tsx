@@ -11,7 +11,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-import { Label } from "@/components/ui/label"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -26,9 +25,14 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
+import { ChangeEvent, useState } from "react"
+import { isBase64Image } from "@/lib/utils"
+import { useUploadThing } from "@/lib/uploadthing"
 
+import { usePathname, useRouter} from "next/navigation"
+import { DialogClose } from "@radix-ui/react-dialog"
 
 
 const formSchema = z.object({
@@ -51,6 +55,10 @@ const formSchema = z.object({
 
 })
     const Certification=()=> {
+      const [files, setFiles] = useState<File[]>([])
+      const {startUpload}= useUploadThing('media');
+      const router = useRouter();
+      ;
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -62,22 +70,65 @@ const formSchema = z.object({
 
         },
       })
-     
+
+      
+    
+   const onSubmit= async(values:z.infer<typeof formSchema>)=>{
+
+
+    const blob = values.image
+   const hasIsImageChanged = isBase64Image(blob)
+
+   if (hasIsImageChanged){
+
+     const imgRes= await startUpload(files)
+
+     if (imgRes && imgRes[0].fileUrl)
+     {
+       values.image = imgRes[0].fileUrl
+     }
+   }
+
+   
+     console.log(values)
+
+  }
  
-      function onSubmit(values: z.infer<typeof formSchema>) {
-            console.log(values)
-      }
+  const handleImage=(e:ChangeEvent<HTMLInputElement>,fieldChange:(value:string)=>void)=>{
+   e.preventDefault();
+   const fileReader = new FileReader();
+   if (e.target.files && e.target.value.length>0){
+     const file = e.target.files[0];
+
+     setFiles(Array.from(e.target.files))
+
+     if (!file.type.includes('image')) return;
+
+     fileReader.onload = async (event)=>{
+
+     const imageDataUrl = event.target?.result?.toString()|| ''
+
+     fieldChange(imageDataUrl)
+     }
+
+     fileReader.readAsDataURL(file)
+   }
+ }
+   
+  
+   
+ 
 
 
   return (
     <>
-    <Dialog>
+    <Dialog >
         <h1 className="text-[28px] font-bold ">Add Certification</h1>
         <p className="text-gray-1 text-[16px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet ex rem voluptas fugit? Nesciunt dolorem repellat</p>
              
       <DialogTrigger asChild className="px-78 py-28 w-full mt-2">
          
-        <Button variant="outline">
+        <Button variant="outline" >
         
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12">
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -85,7 +136,7 @@ const formSchema = z.object({
 </Button>
       </DialogTrigger>
       <DialogContent className="w-fullsm:max-w-[425px] ">
-        <DialogHeader>
+        <DialogHeader >
           <DialogTitle>Add Certification </DialogTitle>
           <DialogDescription className="text-gray-1">
           Add certification to grab the attention of recruiters
@@ -176,7 +227,7 @@ const formSchema = z.object({
                 accept="image/*"
                 placeholder="Upload a photo"
                 className=""
-                // onChange={(e)=>handleImage(e,field.onChange)}
+                onChange={(e)=>handleImage(e,field.onChange)}
                 
                 />
               </FormControl>
@@ -188,7 +239,10 @@ const formSchema = z.object({
         
      
         <DialogFooter>
-        <Button  variant="outline" className="mt-4">save</Button>
+          <DialogClose>
+
+        <Button  variant="outline" className="mt-4"  type="submit" >save</Button>
+          </DialogClose>
         </DialogFooter>
       </form>
     </Form>
@@ -200,7 +254,7 @@ const formSchema = z.object({
         </Link>
         <Link href="/create-profile/bio" >
 
-        <Button type="submit" variant="outline">Next</Button>
+        <Button type="submit" variant="outline" >Next</Button>
         </Link>
         </div>
         </>

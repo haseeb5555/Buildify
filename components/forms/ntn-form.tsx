@@ -15,6 +15,8 @@ import {
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 const formSchema = z.object({
   ntn: z.string().min(2, {
@@ -23,6 +25,8 @@ const formSchema = z.object({
 })
 
 export function NTN() {
+  const router = useRouter()
+  const [ntn, setNtn] = useLocalStorage('ntn', "")
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -32,7 +36,9 @@ export function NTN() {
      
  
       function onSubmit(values: z.infer<typeof formSchema>) {
+            setNtn(values.ntn)
             console.log(values)
+            router.push('/create-profile/certification')
       }
 
 
@@ -49,7 +55,7 @@ export function NTN() {
                  <p className="text-gray-1 text-[16px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eveniet ex rem voluptas fugit? Nesciunt dolorem repellat</p>
               <FormControl className="">
                 <Input placeholder="NTN" {...field}
-                type="number"
+                type="text"
                  className="account-form_input"
                 />
               </FormControl>
@@ -59,9 +65,9 @@ export function NTN() {
         />
         <div className="flex justify-between ">
         <Button  variant="outline">Back</Button>
-        <Link href="/create-profile/certification" >
+        
         <Button type="submit" variant="outline">Next</Button>
-        </Link>
+       
         </div>
       </form>
     </Form>
