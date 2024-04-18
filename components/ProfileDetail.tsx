@@ -4,9 +4,25 @@ import ContactCard from "./ContactCard";
 import { buildingReviews, userProfiles } from "@/constants";
 import ProfileCard from "./ProfileCard";
 import { Badge } from "./ui/badge";
+import ExpCard from "./ExpCard";
 
 
-const ProfileDetail: React.FC = () => {
+const ProfileDetail= ({
+    title,
+    company,
+    ntn,
+    cnic,
+    phone,
+    bio,
+    image,
+    experience,
+    certification,
+    projects,
+    name,
+   
+
+  
+}:any) => {
   return (
     <div className="w-full flex flex-col  max-w-[1440px] gap-8 max-sm:px-4">
 
@@ -18,7 +34,7 @@ const ProfileDetail: React.FC = () => {
             <div className="flex items-center gap-3">
               <div className="relative h-40 w-40 object-cover">
                 <Image
-                  src="/assets/images/user.png"
+                  src={image}
                   alt="user image"
                   fill
                   className="rounded-full object-cover shadow-2xl"
@@ -29,7 +45,7 @@ const ProfileDetail: React.FC = () => {
                   className="flex gap-2 items-center
             "
                 >
-                  <h2 className="text-left text-heading3-bold ">name</h2>
+                  <h2 className="text-left text-heading3-bold ">{name}</h2>
                   <p className="text-gray-1 text-base-medium "> @username</p>
                 </div>
                 <div className="flex gap-2">
@@ -68,7 +84,7 @@ const ProfileDetail: React.FC = () => {
                       d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                     />
                   </svg>
-                  <p className="font-bold text-gray-1">location</p>
+                  <p className="font-bold text-gray-1">Lahore,Pk</p>
                 </div>
               </div>
             </div>
@@ -77,8 +93,7 @@ const ProfileDetail: React.FC = () => {
           <div className="flex flex-col gap-2">
             <h2 className="text-20 font-bold">About Me</h2>
             <p className="text-16 text-gray-1">
-              Lorem ipsum dolor sit Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo eos harum qui dicta non, officiis voluptatem beatae error deserunt ut doloribus officia exercitationem illum aliquam aliquid sequi consequuntur quaerat minus!Lorem amet, consectetur adipiscing elit. Nulla vitae
-              elit libero, a pharetra augue.
+              {bio}
             </p>
           </div>
 
@@ -100,24 +115,28 @@ const ProfileDetail: React.FC = () => {
 
 
         <div className="w-[30%] flex justify-center items-center max-sm:w-full">
-          <ContactCard />
+          <ContactCard 
+           name={name}
+           image={image}
+          
+          />
         </div>
 
       </div>
       <div className="flex flex-col">
-        <h2 className="text-20 font-bold">My Projects</h2>
-        <div className=" flex  flex-wrap gap-20 max-sm:gap-2">
+        <h2 className="text-20 font-bold">Experience</h2>
+        <div className="flex flex-wrap gap-2 max-sm:gap-2 mt-4">
           {
-            userProfiles.map((profile, index) => (
-              <ProfileCard key={index}
-                image={profile.image}
-                bio={profile.bio}
-                name={profile.name}
-                username={profile.username}
-                banner={profile.banner}
-
-
-              />
+            experience.map((profile:any, index:any) => (
+            <div className="flex justify-start items-start gap-4">
+            <ExpCard
+              title={profile.title}
+              company={profile.company}
+              startDate={profile.from}
+              endDate={profile.to}
+              key={index}
+                />
+             </div>   
             ))
           }
         </div>

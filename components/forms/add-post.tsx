@@ -1,6 +1,5 @@
 'use client'
 
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -10,46 +9,97 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { usePathname, useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
 // import { toast, Toaster } from "sonner";
-import { useState } from "react";
 import Image from "next/image";
+import { createThread } from "@/lib/actions/post.action";
+import { isBase64Image } from "@/lib/utils";
+import { useUploadThing } from "@/lib/uploadthing";
+import { ChangeEvent, useState } from "react";
+import { image } from "@nextui-org/react";
 
 
 const PostValidation = z.object({
     title: z.string().nonempty({ message: "Title is required" }),
     description: z.string().nonempty({ message: "Description is required" }),
     budget: z.string().nonempty({ message: "Budget is required" }),
-    time: z.string().nonempty({ message: "Time is required" }),
-    expertiseLevel: z.string().nonempty({ message: "Expertise level is required" }),
     skills: z.string().nonempty({ message: "Skills are required" }),
+    image: z.string().optional(),
 }); 
 
-const AddPostForm = () => {
+const AddPostForm = ({userId}:{userId:string}) => {
+
+
+    const [files, setFiles] = useState<File[]>([])
+    const {startUpload}= useUploadThing('media');
     const router = useRouter();
+    const pathname=usePathname();
+  
+   const form =useForm({
+     resolver:zodResolver(PostValidation),
+     defaultValues:{
+       title:"",
+         description:"",
+            budget:"",
+            skills:"",
+       accountId:userId,
+       image:"" || undefined
+     }
+   });
 
-    const form = useForm({
-        resolver: zodResolver(PostValidation),
-        defaultValues: {
-            title: "",
-            description: "",
-            budget: "",
-            time: "",
-            expertiseLevel: "",
-            skills: "",
-            image:""
-        },
-    });
+   const onSubmit= async(values:z.infer<typeof PostValidation>)=>{
 
-    const onSubmit = async (values: z.infer<typeof PostValidation>) => {
-        
-        router.push('/projects');
-    };
 
+     const blob = values.image
+    const hasIsImageChanged = isBase64Image(blob)
+
+    if (hasIsImageChanged){
+
+      const imgRes= await startUpload(files)
+
+      if (imgRes && imgRes[0].fileUrl)
+      {
+        values.image = imgRes[0].fileUrl
+      }
+    }
+    await createThread({
+        title:values.title,
+        description:values.description,
+        skills:values.skills,
+        author:userId,
+        budget:values.budget,
+        image:values.image,
+        path:pathname
+    })
+
+     router.push('/posts')
+    }
+
+    const handleImage=(e:ChangeEvent<HTMLInputElement>,fieldChange:(value:string)=>void)=>{
+       e.preventDefault();
+       const fileReader = new FileReader();
+       if (e.target.files && e.target.value.length>0){
+         const file = e.target.files[0];
+   
+         setFiles(Array.from(e.target.files))
+   
+         if (!file.type.includes('image')) return;
+   
+         fileReader.onload = async (event)=>{
+   
+         const imageDataUrl = event.target?.result?.toString()|| ''
+   
+         fieldChange(imageDataUrl)
+         }
+   
+         fileReader.readAsDataURL(file)
+       }
+    }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="mt-10 flex flex-col   gap-10">
@@ -94,32 +144,7 @@ const AddPostForm = () => {
                         </FormItem>
                     )}
                 />
-                <FormField
-                    control={form.control}
-                    name="time"
-                    render={({ field }) => (
-                        <FormItem className="flex flex-col gap-3 w-full">
-                            <FormLabel className="text-base-semibold">Time</FormLabel>
-                            <FormControl className="no-focus border border-dark-4">
-                                <Input {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="expertiseLevel"
-                    render={({ field }) => (
-                        <FormItem className="flex flex-col gap-3 w-full">
-                            <FormLabel className="text-base-semibold">Expertise Level</FormLabel>
-                            <FormControl className="no-focus border border-dark-4">
-                                <Input {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+        
                 <FormField
                     control={form.control}
                     name="skills"
@@ -160,7 +185,8 @@ const AddPostForm = () => {
                 //   className=" object-contain"
                 //  />
                 )
-          }
+            }
+
           </FormLabel>
               <FormControl className="flex-1 text-base-semibold ">
                 <Input
@@ -168,7 +194,7 @@ const AddPostForm = () => {
                 accept="image/*"
                 placeholder="Upload a photo"
                 className=""
-                // onChange={(e)=>handleImage(e,field.onChange)}
+                onChange={(e)=>handleImage(e,field.onChange)}
                 
                 />
               </FormControl>
@@ -181,6 +207,8 @@ const AddPostForm = () => {
             </form>
         </Form>
     );
-};
+}
 
-export default AddPostForm;
+export default AddPostForm
+
+

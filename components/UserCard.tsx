@@ -13,7 +13,7 @@ interface Props {
   personType: string;
 }
 
-function UserCard({ name, username, imgUrl, personType }: Props) {
+function UserCard({ id,name, username, imgUrl, personType }: Props) {
   const router = useRouter();
 
 
@@ -40,7 +40,7 @@ function UserCard({ name, username, imgUrl, personType }: Props) {
         className='user-card_btn'
         onClick={() => {
     
-            router.push(`/profileDetail/`);
+            router.push(`/profile/${id}`);
           
         }}
       >

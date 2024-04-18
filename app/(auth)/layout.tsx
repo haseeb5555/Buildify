@@ -24,17 +24,12 @@ export default function RootLayout({
         <body className={inter.className}>
               <Topbar />
         <main className='flex flex-row px-20 py-12 max-sm:px-4'>
-        
           <section className='main-container'>
              <div className='w-full '>
                {children}
              </div>
           </section>
-       
-      
-    
          </main>
-
         </body>
       </html>
     </ClerkProvider>

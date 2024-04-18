@@ -1,10 +1,10 @@
 "use client"
 
-import { C_sidebarLinks, sidebarLinks } from "@/constants"
-import  Link  from "next/link"
-import  Image from "next/image"
-import {usePathname, useRouter} from 'next/navigation'
-import { SignedIn,SignOutButton, useAuth} from '@clerk/nextjs'
+import { C_sidebarLinks } from "@/constants"
+import { SignOutButton, SignedIn, useAuth } from '@clerk/nextjs'
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname, useRouter } from 'next/navigation'
 function Sidebar (){
 
     const router= useRouter();
@@ -16,7 +16,7 @@ function Sidebar (){
          {C_sidebarLinks.map((link)=> {
 
          const isActive =pathname.includes(link.route) && link.route.length>1 || pathname === link.route;
-              if (link.route === "/profile") link.route =`${link.route}/${userId}`
+              if (link.route === "/cp") link.route =`${link.route}/${userId}`
              return(
             <Link 
             href={link.route}
@@ -30,8 +30,9 @@ function Sidebar (){
                   alt={link.label}
                   width={24}
                   height={24}
+                  className="invert dark:invert-0"
                 />
-               <p className="text-light-1 max-lg:hidden"> {link.label}</p>
+               <p className="dark:text-light-1 text-black-1 max-lg:hidden"> {link.label}</p>
             </Link>
          )})}
          

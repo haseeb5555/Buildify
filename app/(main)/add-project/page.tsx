@@ -1,12 +1,21 @@
 import AddPostForm from '@/components/forms/add-post'
+import { fetchUser } from '@/lib/actions/user.action';
+import { currentUser } from '@clerk/nextjs';
+import { redirect } from 'next/navigation';
 import React from 'react'
 
-const page = () => {
+async function Page () {
+  const user = await currentUser();
+  if(!user) return null;
+  const userInfo = await fetchUser(user.id)
+   if(!userInfo?.onboarded) redirect('/onboarding')
   return (
    <div className='w-full flex justify-center items-center   max-w-4xl'>
-       <AddPostForm/>
+       <AddPostForm
+         userId={userInfo._id}
+       />
    </div>
   )
 }
 
-export default page
+export default Page

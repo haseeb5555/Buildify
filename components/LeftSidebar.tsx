@@ -30,8 +30,9 @@ function LeftSidebar (){
                   alt={link.label}
                   width={24}
                   height={24}
+                  className="invert dark:invert-0"
                 />
-               <p className="text-light-1 max-lg:hidden"> {link.label}</p>
+               <p className=" max-lg:hidden"> {link.label}</p>
             </Link>
          )})}
          

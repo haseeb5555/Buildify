@@ -181,6 +181,11 @@ export const C_sidebarLinks = [
 		route: "/jobs",
 		label: "Jobs"
 	  },
+	  {
+		imgURL: "/assets/user.svg",
+		route: "/cp",
+		label: "Profile",
+	  },
   ];
 
 export const sidebarLinks = [
@@ -210,6 +215,11 @@ export const sidebarLinks = [
       route: "/profiles",
       label: "Constructor Profiles",
     },
+	{
+		imgURL: "/assets/user.svg",
+		route: "/profile",
+		label: "Profile",
+	  },
   ];
 
 

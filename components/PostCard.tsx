@@ -1,69 +1,142 @@
-import { Card } from "@/components/ui/card";
-import { HeartIcon, MessageCircleIcon, TwitterIcon } from "lucide-react";
- type Props = {
-    profile: {
-        imageSrc: string;
-        name: string;
-        username: string;
-    };
-    tweet: string;
-    likes: number;
-    retweets: number;
-    timestamp: string;
- }
 
-export default function PostCard({ profile, tweet, likes, retweets, timestamp }:Props) {
+import Image from "next/image";
+import Link from "next/link";
+
+
+
+
+interface Props {
+  id: string;
+  currentUserId: string;
+  parentId: string | null;
+  title: string;
+  description: string;
+  budget: string;
+  skills: string;
+
+  image?: string;
+  author: {
+    name: string;
+    image: string;
+    id: string;
+  };
+  
+  createdAt: string;
+  comments: {
+    author: {
+      image: string;
+    };
+  }[];
+  isComment?: boolean;
+}
+
+function Card({
+  id,
+  currentUserId,
+  parentId,
+  author,
+  title,
+  description,
+  budget,
+  skills,
+
+  createdAt,
+  comments,
+  isComment,
+  image
+}: Props) {
+
+
+
+
+
   return (
-    <Card
-      key="1"
-      className="w-full  bg-white dark:bg-transparent backdrop-blur rounded-xl shadow-md overflow-hidden md:max-w-3xl m-3 ring-1 ring-slate-900"
+
+    <article
+      className={`flex w-full flex-col rounded-xl ${isComment?'mt-4 px-0 xs:px-7':'dark:shadow-2xl dark:shadow-purple-700  p-7'}`}
     >
-      <div className="md:flex">
-        <div className="md:flex-shrink-0">
-          <span className="object-cover md:w-48 rounded-md bg-muted w-[192px] h-[192px]" />
-        </div>
-        <div className="p-8 w-full">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <img
-                alt="Profile picture"
-                className="rounded-full"
-                height="40"
-                src={profile.imageSrc || "/placeholder.svg"}
-                style={{
-                  aspectRatio: "40/40",
-                  objectFit: "cover",
-                }}
-                width="40"
+      <div className='flex items-start justify-between'>
+        <div className='flex w-full flex-1 flex-row gap-4'>
+          <div className='flex flex-col items-center'>
+            <Link href={`/profile/${author.id}`} className='relative h-11 w-11'>
+              <Image
+                src={author.image}
+                alt='user_community_image'
+                fill
+                className='cursor-pointer rounded-full'
               />
-              <div className="ml-4">
-                <div className="uppercase tracking-wide text-sm text-black dark:text-white font-semibold">
-                  {profile.name}
-                </div>
-                <div className="text-gray-400 dark:text-gray-300">@{profile.username}</div>
-              </div>
-            </div>
-         
+            </Link>
+
+            <div className='thread-card_bar' />
           </div>
-          <p className="mt-4 text-gray-500 dark:text-gray-300">
-            {tweet}
-          </p>
-          <div className="flex mt-6 justify-between items-center">
-            <div className="flex space-x-4 text-gray-400 dark:text-gray-300">
-              <div className="flex items-center">
-                <HeartIcon className="h-6 w-6 text-red-500" />
-                <span className="ml-1 text-red-500">{likes}</span>
+
+          <div className='flex w-full flex-col'>
+            <Link href={`/profile/${author.id}`} className='w-fit'>
+              <h4 className='cursor-pointer text-base-semibold '>
+                {author.name}
+              </h4>
+            </Link>
+      
+            
+            <h3 className='text-base-semibold mt-2'>{title}</h3>
+            <p className='mt-2 text-small-regular '>Budget{budget}</p>
+               
+
+            <p className='mt-2 text-small-regular '>{description}</p>
+            {
+
+              image &&
+              <Image 
+              src={image}
+              alt={image}
+              width={400}
+              height={400}
+              className="object-contain rounded-lg mt-2"
+              />
+              } 
+
+            <div className="mt-5 flex flex-col gap-3">
+              <div className='flex flex-row gap-3.5'>
+              
+
+   
+             
+                <Link href={`/thread/${id}`}>
+                  <Image
+                    src='/assets/reply.svg'
+                    alt='heart'
+                    width={24}
+                    height={24}
+                    className='cursor-pointer object-contain'
+                    
+                  />
+                </Link>
+                <Image
+                  src='/assets/repost.svg'
+                  alt='heart'
+                  width={24}
+                  height={24}
+                  className='cursor-pointer object-contain'
+                />
+                <Image
+                  src='/assets/share.svg'
+                  alt='heart'
+                  width={24}
+                  height={24}
+                  className='cursor-pointer object-contain'
+                />
               </div>
-              <div className="flex items-center">
-                <MessageCircleIcon className="h-6 w-6 text-green-500" />
-                <span className="ml-1 text-green-500">{retweets}</span>
-              </div>
+
+         
             </div>
-            <div className="text-gray-400 dark:text-gray-300">{timestamp}</div>
           </div>
         </div>
-      </div>
-    </Card>
+          
+       </div>
+          
+         
+    </article>
   );
 }
 
+export default Card;

@@ -1,15 +1,8 @@
 import mongoose from "mongoose"
 
-export const PostSchema = new mongoose.Schema({
-    title:{type:String,required:true},
-    description:{type:String,required:true},
-    budget:{type:String,required:true},
-    skills:
-        {
-            type:String,
-            required:true
-        } ,
-    image:String,
+
+export const commentSchema = new mongoose.Schema({
+    text:{type:String,required:true},
     author: {
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
@@ -33,6 +26,6 @@ export const PostSchema = new mongoose.Schema({
 })
 
 
-const Post = mongoose.models.Post|| mongoose.model('Post',PostSchema);
+const Comment = mongoose.models.Comment|| mongoose.model('Comment',commentSchema);
 
-export default Post;
+export default Comment;

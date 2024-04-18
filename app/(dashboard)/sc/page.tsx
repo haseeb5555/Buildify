@@ -1,13 +1,12 @@
-import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs";
 
 import UserCard from "@/components/UserCard";
 
 import Pagination from "@/components/Pagination";
 
-import { fetchConstructors } from "@/actions/profile.action";
+import { fetchUser, fetchUsers } from "@/lib/actions/user.action";
 import Searchbar from "@/components/Searchbar";
-import { fetchUser } from "@/lib/actions/user.action";
 
 async function Page({
   searchParams,
@@ -20,7 +19,7 @@ async function Page({
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  const result = await fetchConstructors({
+  const result = await fetchUsers({
     userId: user.id,
     searchString: searchParams.q,
     pageNumber: searchParams?.page ? +searchParams.page : 1,
@@ -31,7 +30,7 @@ async function Page({
     <section>
       <h1 className='head-text mb-10'>Search</h1>
 
-      <Searchbar routeType='search' />
+      <Searchbar routeType='sc' />
 
       <div className='mt-14 flex flex-col gap-9'>
         {result.users.length === 0 ? (
