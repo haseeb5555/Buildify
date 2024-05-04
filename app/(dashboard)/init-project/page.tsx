@@ -6,7 +6,7 @@ const page = async () => {
    
   const user = await currentUser()
   if(!user) return null;
-  const userInfo = await fetchConstructor('123')
+  const userInfo = await fetchConstructor(user.id)
   console.log(userInfo)
   return (
    <div className='w-full flex justify-center items-center   max-w-4xl'>

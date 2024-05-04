@@ -130,7 +130,7 @@ console.log(user)
           }
        );
 
-       
+       router.push('/jobs')
   }
 
   return (

@@ -3,6 +3,8 @@
 
 import { connectToDB } from "@/lib/models/connection";
 import Profile from "@/lib/models/profile.model";
+import { Project } from "@/lib/models/project.model";
+import { UserProject } from "@/lib/models/user-project.model";
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
 
@@ -164,3 +166,30 @@ export async function fetchConstructor(userId: string) {
           throw error;
         }
       }
+  
+      interface UserProject {
+        title: string;
+        description: string;
+        image: string;
+        author: string;
+        path:string
+      }
+
+      export async function createProject({ title, description,image,author,path}: UserProject,
+      ) {
+        try {
+          connectToDB();
+          const createdProject = await UserProject.create({
+              title,
+              description,
+              image// Assign communityId if provided, or leave it null for personal account
+          });
+          await Profile.findByIdAndUpdate(author, {
+            $push: { projects: createdProject._id },
+          });
+          revalidatePath(path);
+        } catch (error: any) {
+           console.log(error);
+        }
+      }
+      

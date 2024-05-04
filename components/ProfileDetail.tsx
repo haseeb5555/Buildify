@@ -5,6 +5,7 @@ import { buildingReviews, userProfiles } from "@/constants";
 import ProfileCard from "./ProfileCard";
 import { Badge } from "./ui/badge";
 import ExpCard from "./ExpCard";
+import AddProject from "./forms/add-project";
 
 
 const ProfileDetail= ({
@@ -19,6 +20,7 @@ const ProfileDetail= ({
     certification,
     projects,
     name,
+    author
    
 
   
@@ -125,6 +127,7 @@ const ProfileDetail= ({
       </div>
       <div className="flex flex-col">
         <h2 className="text-20 font-bold">Experience</h2>
+        <AddProject author={author}/>
         <div className="flex flex-wrap gap-2 max-sm:gap-2 mt-4">
           {
             experience.map((profile:any, index:any) => (

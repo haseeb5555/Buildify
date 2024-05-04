@@ -77,7 +77,7 @@ const userSchema: Schema = new Schema({
    },
   experience: [experienceSchema],
   certification: [certificationSchema],
-  projects: [projectSchema],
+  projects: [{ type: Schema.Types.ObjectId, ref: "UserProject" }],
   feedback: [{ type: Schema.Types.ObjectId, ref: "Feedback" }],
   comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
   rooms: [{ type: Schema.Types.ObjectId, ref: "Window" }],
