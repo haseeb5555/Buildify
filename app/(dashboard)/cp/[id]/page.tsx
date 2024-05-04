@@ -24,6 +24,7 @@ const page = async(
         experience={userInfo.experience}
         certification={userInfo.certification}
         projects={userInfo.projects}
+        author={userInfo._id}
 
       
       />

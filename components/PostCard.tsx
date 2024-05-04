@@ -13,7 +13,7 @@ interface Props {
   description: string;
   budget: string;
   skills: string;
-
+  text?:string;
   image?: string;
   author: {
     name: string;
@@ -39,7 +39,7 @@ function Card({
   description,
   budget,
   skills,
-
+ text,
   createdAt,
   comments,
   isComment,
@@ -76,10 +76,10 @@ function Card({
                 {author.name}
               </h4>
             </Link>
-      
+       
             
             <h3 className='text-base-semibold mt-2'>{title}</h3>
-            <p className='mt-2 text-small-regular '>Budget{budget}</p>
+            <p className='mt-2 text-small-regular '>{isComment?text:budget}</p>
                
 
             <p className='mt-2 text-small-regular '>{description}</p>

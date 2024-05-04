@@ -2,6 +2,7 @@ import { buildingReviews } from "@/constants";
 import Image from "next/image";
 import ContactCard from "./ContactCard";
 import ExpCard from "./ExpCard";
+<<<<<<< HEAD
 import { Badge } from "./ui/badge";
 
 const ProfileDetail = ({
@@ -17,6 +18,28 @@ const ProfileDetail = ({
   projects,
   name,
 }: any) => {
+=======
+import AddProject from "./forms/add-project";
+
+
+const ProfileDetail= ({
+    title,
+    company,
+    ntn,
+    cnic,
+    phone,
+    bio,
+    image,
+    experience,
+    certification,
+    projects,
+    name,
+    author
+   
+
+  
+}:any) => {
+>>>>>>> 81f8a7ab66d1ed1b477d3b46b8db527d11fa12a1
   return (
     <div className="w-full flex flex-col  max-w-[1440px] gap-8 max-sm:px-4">
       <div className="flex justify-start items-start w-full gap-8 max-sm:flex-col max-sm:items-center">
@@ -105,6 +128,7 @@ const ProfileDetail = ({
       </div>
       <div className="flex flex-col">
         <h2 className="text-20 font-bold">Experience</h2>
+        <AddProject author={author}/>
         <div className="flex flex-wrap gap-2 max-sm:gap-2 mt-4">
           {experience.map((profile: any, index: any) => (
             <div className="flex justify-start items-start gap-4">

@@ -15,6 +15,7 @@ const  Page =  async ({params}:{params:{id:string}}) => {
       const userInfo = await fetchUser(user.id)
       if (!userInfo?.onboarded) redirect('/onboarding')
        const post = await fetchThreadById(params.id)
+       console.log(post)
   return (
      <section className="relative">
     
@@ -42,20 +43,24 @@ const  Page =  async ({params}:{params:{id:string}}) => {
       </div>
        <div className="mt-10">
          {post.children.map((item:any)=>(
+          <>
+            {console.log(item)}
                <Card
                key={item._id}
                 id={item._id}
                 currentUserId={user?.id || ''}
                 parentId={item.parentId}
                 title={item.title}
+                text={item.text}
                 description={item.description}
                 budget={item.budget}
                 skills={item.skills}
                 author ={item.author}
                 createdAt={item.createdAt}
                 comments={item.children}
-                isComment
+                isComment={true}
               />
+              </>
          ))}
        </div>
 
