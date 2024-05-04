@@ -193,3 +193,11 @@ export async function fetchConstructor(userId: string) {
         }
       }
       
+       export async function fetchProfiles() {
+        try {
+          connectToDB();
+          return await Profile.find();
+        } catch (error: any) {
+          console.log(error);
+        }
+      }

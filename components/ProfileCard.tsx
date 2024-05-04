@@ -6,7 +6,7 @@ type User={
   name:string,
   username:string,
   bio:string,
-  banner:string
+  banner?:string
 
 }
 

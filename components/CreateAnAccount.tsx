@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
 import { Checkbox, Link, cn } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Button } from "./ui/button";
-import { redirect, useRouter } from "next/navigation";
 import { Separator } from "./ui/separator";
 
 const CreateAnAccount = () => {
