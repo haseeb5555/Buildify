@@ -1,34 +1,25 @@
+import { buildingReviews } from "@/constants";
 import Image from "next/image";
-import React from "react";
 import ContactCard from "./ContactCard";
-import { buildingReviews, userProfiles } from "@/constants";
-import ProfileCard from "./ProfileCard";
-import { Badge } from "./ui/badge";
 import ExpCard from "./ExpCard";
+import { Badge } from "./ui/badge";
 
-
-const ProfileDetail= ({
-    title,
-    company,
-    ntn,
-    cnic,
-    phone,
-    bio,
-    image,
-    experience,
-    certification,
-    projects,
-    name,
-   
-
-  
-}:any) => {
+const ProfileDetail = ({
+  title,
+  company,
+  ntn,
+  cnic,
+  phone,
+  bio,
+  image,
+  experience,
+  certification,
+  projects,
+  name,
+}: any) => {
   return (
     <div className="w-full flex flex-col  max-w-[1440px] gap-8 max-sm:px-4">
-
-
       <div className="flex justify-start items-start w-full gap-8 max-sm:flex-col max-sm:items-center">
-
         <div className="w-[60%] flex flex-col gap-8 max-sm:w-full">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -92,9 +83,7 @@ const ProfileDetail= ({
 
           <div className="flex flex-col gap-2">
             <h2 className="text-20 font-bold">About Me</h2>
-            <p className="text-16 text-gray-1">
-              {bio}
-            </p>
+            <p className="text-16 text-gray-1">{bio}</p>
           </div>
 
           {/* Skills */}
@@ -107,99 +96,87 @@ const ProfileDetail= ({
             </ul>
           </div>
 
-
-
           {/* Reviews */}
-
         </div>
-
 
         <div className="w-[30%] flex justify-center items-center max-sm:w-full">
-          <ContactCard 
-           name={name}
-           image={image}
-          
-          />
+          <ContactCard name={name} image={image} />
         </div>
-
       </div>
       <div className="flex flex-col">
         <h2 className="text-20 font-bold">Experience</h2>
         <div className="flex flex-wrap gap-2 max-sm:gap-2 mt-4">
-          {
-            experience.map((profile:any, index:any) => (
+          {experience.map((profile: any, index: any) => (
             <div className="flex justify-start items-start gap-4">
-            <ExpCard
-              title={profile.title}
-              company={profile.company}
-              startDate={profile.from}
-              endDate={profile.to}
-              key={index}
-                />
-             </div>   
-            ))
-          }
+              <ExpCard
+                title={profile.title}
+                company={profile.company}
+                startDate={profile.from}
+                endDate={profile.to}
+                key={index}
+              />
+            </div>
+          ))}
         </div>
       </div>
-        <h2 className="text-20 font-bold">Reviews</h2>
-  <div className="space-y-6">
-    {buildingReviews.map((review, index) => (
-      <div key={index} className="p-4 rounded-lg bg-transparent backdrop-blur ring-1 ring-slate-900">
-        <div className="flex items-center justify-start gap-3 mb-2">
-       
-           <Image 
-            src={review.image}
-            alt="reviewer"
-            width={34}
-            height={34}
-            className="rounded-full object-cover shadow-2xl"
-           
-           />
-          <div className="w-full flex justify-between ">
-
-          <div className="flex flex-col gap-1">
-            <h2 className="text-base font-bold">{review.name}</h2>
-            <p className="text-gray-1 text-xs">{review.date}</p>
-          </div>
-          <Badge variant="outline" className="h-8 "  >Review</Badge>
-          </div>
-        </div>
-          <h2 className="text-xl font-bold">{review.title}</h2>
-        <h3 className="text-xl mb-2 font-semibold">{review.price}</h3>
-        <p className="text-gray-1 text-[16px]">{review.reviewContent}</p>
-        <div className="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 text-yellow-500"
+      <h2 className="text-20 font-bold">Reviews</h2>
+      <div className="space-y-6">
+        {buildingReviews.map((review, index) => (
+          <div
+            key={index}
+            className="p-4 rounded-lg bg-transparent backdrop-blur ring-1 ring-slate-900"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-          <p className="text-yellow-500">{review.rating}</p>
-          <img src='/assets/icons/star.svg' width={14} height={14} className='object-contain m-0' alt="" />
-        </div>
+            <div className="flex items-center justify-start gap-3 mb-2">
+              <Image
+                src={review.image}
+                alt="reviewer"
+                width={34}
+                height={34}
+                className="rounded-full object-cover shadow-2xl"
+              />
+              <div className="w-full flex justify-between ">
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-base font-bold">{review.name}</h2>
+                  <p className="text-gray-1 text-xs">{review.date}</p>
+                </div>
+                <Badge variant="outline" className="h-8 ">
+                  Review
+                </Badge>
+              </div>
+            </div>
+            <h2 className="text-xl font-bold">{review.title}</h2>
+            <h3 className="text-xl mb-2 font-semibold">{review.price}</h3>
+            <p className="text-gray-1 text-[16px]">{review.reviewContent}</p>
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 text-yellow-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <p className="text-yellow-500">{review.rating}</p>
+              <img
+                src="/assets/icons/star.svg"
+                width={14}
+                height={14}
+                className="object-contain m-0"
+                alt=""
+              />
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
 
-
-
-
-
-        <div className="flex flex-col items-center">
-
-
-        </div>
-      </div>
-
-  
+      <div className="flex flex-col items-center"></div>
+    </div>
   );
 };
 
