@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createProfile } from "@/actions/profile.action";
 import { usePathname, useRouter } from "next/navigation";
+import{PlusCircleIcon,MinusCircleIcon} from 'lucide-react'
 
 
 
@@ -135,7 +136,7 @@ console.log(user)
 
   return (
     <Form {...form}>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
         <div className="flex gap-8">
           <FormField
             control={control}
@@ -144,7 +145,7 @@ console.log(user)
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input  placeholder="Enter title" {...field} className="account-form_input" />
+                  <Input placeholder="Enter title" {...field} className="account-form_input" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -155,7 +156,7 @@ console.log(user)
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company</FormLabel>
+                <FormLabel className="text-[18px]">Company</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter company" {...field} className="account-form_input" />
                 </FormControl>
@@ -163,8 +164,6 @@ console.log(user)
               </FormItem>
             )}
           />
-        </div>
-        <div className="flex gap-8">
           <FormField
             control={control}
             name="cnic"
@@ -178,6 +177,8 @@ console.log(user)
               </FormItem>
             )}
           />
+        </div>
+        <div className="flex gap-8">
           <FormField
             control={control}
             name="ntn"
@@ -191,8 +192,6 @@ console.log(user)
               </FormItem>
             )}
           />
-        </div>
-        <div className="flex gap-8">
           <FormField
             control={control}
             name="phone"
@@ -224,131 +223,130 @@ console.log(user)
         <div>
           <FormLabel>Experience</FormLabel>
           {experienceFields.map((field, index) => (
-            <div key={field.id} className="flex flex-col gap-4">
-          <FormField
-            control={control}
-            name={`experience.${index}.title`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />    
-          
-          <FormField
-            control={control}
-            name={`experience.${index}.company`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> 
-          <FormField
-            control={control}
-            name={`experience.${index}.from`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input" type="date"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> 
-            
+             <>
+            <div key={field.id} className="flex  gap-4">
               <FormField
-            control={control}
-            name={`experience.${index}.to`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input" type="date" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> 
-              <Button type="button" onClick={() => removeExperience(index)}>
-                Remove Experience
-              </Button>
+                control={control}
+                name={`experience.${index}.title`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter title" {...field} className="account-form_input" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-         
-              
+              <FormField
+                control={control}
+                name={`experience.${index}.company`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter company" {...field} className="account-form_input" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={control}
+                name={`experience.${index}.from`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>From</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter from" {...field} className="account-form_input" type="date" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
             </div>
+              <div className="flex gap-4">
+
+              <FormField
+                control={control}
+                name={`experience.${index}.to`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>To</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter to" {...field} className="account-form_input" type="date" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="mt-8 flex gap-2">
+
+              <MinusCircleIcon onClick={() => removeExperience(index)}
+               className="cursor-pointer h-8 w-8"
+              />
+              <PlusCircleIcon onClick={() => appendExperience({ title: "", company: "", from: "", to: "" })}
+               className="cursor-pointer h-8 w-8"
+              />
+              </div>
+              </div>
+             </>
           ))}
-          <Button
-            type="button"
-            onClick={() => appendExperience({ title: "", company: "", from: "", to: "" })}
-          >
-            Add Experience
-          </Button>
         </div>
 
         <div>
           <FormLabel>Certification</FormLabel>
           {certificationFields.map((field, index) => (
             <div key={field.id} className="flex flex-col gap-4">
-             <FormField
-            control={control}
-            name={`certification.${index}.title`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />    
-          
-          <FormField
-            control={control}
-            name={`certification.${index}.company`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> 
-          <FormField
-            control={control}
-            name={`certification.${index}.issue`}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter phone" {...field} className="account-form_input" type="date"  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> 
-            
+              <FormField
+                control={control}
+                name={`certification.${index}.title`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter title" {...field} className="account-form_input" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={control}
+                name={`certification.${index}.company`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Company</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter company" {...field} className="account-form_input" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={control}
+                name={`certification.${index}.issue`}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Issue</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter issue" {...field} className="account-form_input" type="date" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <Button type="button" onClick={() => removeCertification(index)}>
                 Remove Certification
               </Button>
             </div>
           ))}
-          <Button
-            type="button"
-            onClick={() => appendCertification({ title: "", company: "", issue: "",  })}
-          >
+          <Button type="button" onClick={() => appendCertification({ title: "", company: "", issue: "" })}>
             Add Certification
           </Button>
         </div>

@@ -148,7 +148,7 @@
 }
 
 .account-form_input {
-  @apply w-[400px] max-md:w-full border border-dark-4 bg-dark-3 text-light-1 !important;
+  @apply w-[300px] max-md:w-full border border-dark-4 bg-dark-3 text-light-1 !important;
 }
 
 /* Comment Form */
