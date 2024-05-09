@@ -299,7 +299,7 @@ console.log(user)
         <div>
           <FormLabel>Certification</FormLabel>
           {certificationFields.map((field, index) => (
-            <div key={field.id} className="flex flex-col gap-4">
+            <div key={field.id} className="flex  gap-4">
               <FormField
                 control={control}
                 name={`certification.${index}.title`}
@@ -340,15 +340,14 @@ console.log(user)
                   </FormItem>
                 )}
               />
-
-              <Button type="button" onClick={() => removeCertification(index)}>
-                Remove Certification
-              </Button>
+               <div className="mt-8 flex gap-2">
+              <MinusCircleIcon className="h-8 w-8" type="button" onClick={() => removeCertification(index)}/>
+          <PlusCircleIcon   className="h-8 w-8"  type="button" onClick={() => appendCertification({ title: "", company: "", issue: "" })}/>
+               </div>
             </div>
           ))}
-          <Button type="button" onClick={() => appendCertification({ title: "", company: "", issue: "" })}>
-            Add Certification
-          </Button>
+          
+         
         </div>
 
         <Button type="submit">Submit</Button>
