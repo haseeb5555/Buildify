@@ -1,38 +1,16 @@
-import WindowCard from '@/components/WindowCard'
-import React from 'react'
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/fG4sYKcbjQo
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu"
+import { Checkbox } from "@/components/ui/checkbox"
 import { CardContent, Card } from "@/components/ui/card"
 
-const page = async() => {
- const res= await fetch('http://localhost:3000/api/room',{
-    method:'GET',
-    headers:{
-      'Content-Type':'application/json'
-    }
-  
- })
-  const data = await res.json()
-  console.log(data)
-  
+export default function Component() {
   return (
-    // <div className='flex gap-8'>
-    //   {data?.map((item:any)=>(
-    //     <div className='flex justify-start items-start gap-8 '>
-    //     <WindowCard
-    //     key={item._id}
-    //     id={item._id}
-    //     title={item.title}
-    //     description={item.description}
-    //     budget={item.budget}
-    //     TotalAmount={item.TotalAmount}
-    //     milestones={item.milestones}
-    //        />
-    //     </div>
-    //   ))}
-
-    // </div>
     <div className="flex min-h-screen flex-col">
    
         <main className="flex-1 p-6">
@@ -50,15 +28,15 @@ const page = async() => {
                   <DropdownMenuLabel>Filter by:</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem>
-                 
+                    <Checkbox />
                     In Progress{"\n                                "}
                   </DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>
-                   
+                    <Checkbox />
                     Completed{"\n                                "}
                   </DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>
-              
+                    <Checkbox />
                     Archived{"\n                                "}
                   </DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
@@ -147,8 +125,6 @@ const page = async() => {
       </div>
   )
 }
-
-export default page
 
 function CalendarIcon(props) {
   return (

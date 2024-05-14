@@ -1,8 +1,10 @@
-"use client";
-
+"use client"
+import { DialogTrigger, DialogTitle, DialogDescription, DialogHeader, DialogFooter, DialogContent, Dialog } from "@/components/ui/dialog"
 import { InformationCircleIcon } from "@heroicons/react/solid";
 import React from "react";
-;
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { CardTitle, CardDescription, CardHeader, CardContent, CardFooter, Card as ChatCard } from "@/components/ui/card"
 import {
   AreaChart,
   BadgeDelta,
@@ -212,7 +214,7 @@ export default function FinalDashboard() {
   return (
     <div className="w-full flex justify-start items-start gap-4 max-sm:flex-col">
    
-    <main className="w-[40%] border-r pr-2 max-sm:w-[380px]">
+    <main className="w-full border-r pr-2 max-sm:w-[380px]">
       <Title>Progress Room</Title>
       <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
 
@@ -269,9 +271,48 @@ export default function FinalDashboard() {
             </div>
           </TabPanel>
    
-
+          <Dialog>
+        <DialogTrigger asChild>
+          <Button>Update Milestones</Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px] md:max-w-[500px] lg:max-w-[600px]">
+          <DialogHeader>
+            <DialogTitle>Update Milestones</DialogTitle>
+            <DialogDescription>Make changes to your construction milestones here.</DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col justify-center items-center gap-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label className="text-right" htmlFor="foundation">
+                Found
+              </Label>
+              <Input className="col-span-3" defaultValue="80" id="foundation" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label className="text-right" htmlFor="framing">
+                Framing
+              </Label>
+              <Input className="col-span-3" defaultValue="60" id="framing" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label className="text-right" htmlFor="electrical">
+                Electrical
+              </Label>
+              <Input className="col-span-3" defaultValue="40" id="electrical" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label className="text-right" htmlFor="drywall">
+                Drywall
+              </Label>
+              <Input className="col-span-3" defaultValue="30" id="drywall" />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button type="submit">Save Changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
           <TabPanel>
-            <div className="mt-6 w-[400px]">
+            <div className="mt-6 w-full">
               <Card>
                 <>
                   <div>
@@ -347,113 +388,101 @@ export default function FinalDashboard() {
         </TabPanels>
       </TabGroup>
     </main>
-    <div className="w-[60%]  sticky top-20 flex flex-col gap-4">
+    <div className="w-full  sticky top-20 flex flex-col gap-4">
 
 {/* <WebcamCapture/> */}
-
- <div  className="flex flex-col gap-4">
-
-  
- <div className="relative flex items-center justify-between bg-dark-3 px-3 py-4 rounded-xl ">
-       <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10 object-cover">
-           <Image
-             src="https://avatars.githubusercontent.com/u/129727756?v=4"
-             alt="user image"
-              fill
-             className="rounded-full object-cover shadow-2xl"
-           
-           />
-          </div>
-          <div className="w-full flex justify-between items-center gap-[400px]">
-
-            <div className="flex-1">
-             <h2 className="text-left text-heading3-bold text-[18px]">Haseeb</h2>
-             <p   className="text-gray-1 text-base-medium text-[12px]">@iamhaseebali_</p>
-
-            </div>
-             <div className="flex gap-4 float-right">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
-          </svg>
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              < path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-             </svg>
-
-
-             </div>
-          </div>
-       </div>
-    </div>
-
-    <div className="chat chat-start">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS chat bubble component" src="https://avatars.githubusercontent.com/u/129727756?v=4" />
-    </div>
-  </div>
-  <div className="chat-header">
-   Haseeb
-    <time className="text-xs opacity-50">12:45</time>
-  </div>
-  <div className="chat-bubble">You were the Chosen One!</div>
-  <div className="chat-footer opacity-50">
-    Delivered
-  </div>
-</div>
-<div className="chat chat-start">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS chat bubble component" src="https://avatars.githubusercontent.com/u/129727756?v=4" />
-    </div>
-  </div>
-  <div className="chat-header">
-   Haseeb
-    <time className="text-xs opacity-50">12:45</time>
-  </div>
-  <div className="chat-bubble">You were the Chosen One!</div>
-  <div className="chat-footer opacity-50">
-    Delivered
-  </div>
-</div>
-<div className="chat chat-end">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img alt="Tailwind CSS chat bubble component" src="https://avatars.githubusercontent.com/u/147314000?v=4" />
-    </div>
-  </div>
-  <div className="chat-header">
-    Faheem
-    <time className="text-xs opacity-50">12:46</time>
-  </div>
-  <div className="chat-bubble">All the way from London!</div>
-  <div className="chat-footer opacity-50">
-    Seen at 12:46
-  </div>
-</div>
-
-
-<Input
-  id='text'
-  value={search}
-  onChange={(e) => setSearch(e.target.value)}
-   placeholder="Type...."
-  className='no-focus searchbar_input pl-10'
-/>
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 absolute left-0 top-[430px]">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-</svg>
-
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 absolute right-0 top-[430px] bg-dark-1 py-2 px-2 rounded-full mr-2">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6  absolute right-12 top-[435px]">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-</svg>
-
- </div>
-
+      
+<Card className="h-full w-full max-w-2xl">
+                <CardHeader>
+                  <CardTitle>Construction Chat</CardTitle>
+                  <CardDescription>
+                    Discuss the progress of your room construction project with your team.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 overflow-auto">
+                  <div className="grid gap-4">
+                    <div className="flex items-start gap-4">
+                      <img
+                        alt="Avatar"
+                        className="rounded-full"
+                        height={40}
+                        src="/placeholder.svg"
+                        style={{
+                          aspectRatio: "40/40",
+                          objectFit: "cover",
+                        }}
+                        width={40}
+                      />
+                      <div className="flex-1 space-y-2">
+                        <div className="rounded-lg bg-muted/50 p-4">
+                          <p>
+                            Hey team, just wanted to give an update on the room construction. The foundation is 80%
+                            complete and we're moving on to the framing.
+                          </p>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          <time dateTime="2023-06-23">June 23, 2023</time>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <img
+                        alt="Avatar"
+                        className="rounded-full"
+                        height={40}
+                        src="/placeholder.svg"
+                        style={{
+                          aspectRatio: "40/40",
+                          objectFit: "cover",
+                        }}
+                        width={40}
+                      />
+                      <div className="flex-1 space-y-2">
+                        <div className="rounded-lg bg-muted/50 p-4">
+                          <p>
+                            Great to hear! Let's make sure we stay on top of the electrical work. I'll schedule a
+                            meeting to discuss the next steps.
+                          </p>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          <time dateTime="2023-06-24">June 24, 2023</time>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                      <img
+                        alt="Avatar"
+                        className="rounded-full"
+                        height={40}
+                        src="/placeholder.svg"
+                        style={{
+                          aspectRatio: "40/40",
+                          objectFit: "cover",
+                        }}
+                        width={40}
+                      />
+                      <div className="flex-1 space-y-2">
+                        <div className="rounded-lg bg-muted/50 p-4">
+                          <p>
+                            Sounds good. I'll make sure the electrician is on-site and ready to go. Let's keep this
+                            momentum going!
+                          </p>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          <time dateTime="2023-06-25">June 25, 2023</time>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Input className="flex-1" placeholder="Type your message..." type="text" />
+                  <Button className="ml-4" type="submit">
+                    Send
+                  </Button>
+                </CardFooter>
+              </Card>
 </div>
     </div>
   );
-}
+}  

@@ -85,7 +85,7 @@ const InitProject = ({author}:{author:string}) => {
         }
          )
          console.log(author)
-        
+        router.push('/room')
     }
 
     return (
