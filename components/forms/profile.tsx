@@ -135,6 +135,8 @@ export default function ProfileForm({ user }: { user: any }) {
   }
 
   return (
+  <>
+      <h1 className="font-bold text-[24px] text-white mb-4">Create Profile</h1>
     <Form {...form}>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
         <div className="flex gap-8">
@@ -249,7 +251,7 @@ export default function ProfileForm({ user }: { user: any }) {
         </div>
 
         <div>
-          <FormLabel>Experience</FormLabel>
+          <FormLabel className="text-[24px] font-bold">Experience</FormLabel>
           {experienceFields.map((field, index) => (
             <>
               <div key={field.id} className="flex  gap-4">
@@ -431,5 +433,6 @@ export default function ProfileForm({ user }: { user: any }) {
         </Button>
       </form>
     </Form>
+    </>
   );
 }
