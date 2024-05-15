@@ -1,9 +1,6 @@
-import WindowCard from '@/components/WindowCard'
-import React from 'react'
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu"
-import { CardContent, Card } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const page = async() => {
  const res= await fetch('http://localhost:3000/api/room',{

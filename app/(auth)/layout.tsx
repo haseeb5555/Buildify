@@ -24,11 +24,18 @@ export default function RootLayout({
       <html lang="en" className="dark">
         <body className={inter.className}>
           <Topbar />
-          <BackgroundBeams />
           <main className="flex flex-row px-20 py-12 max-sm:px-4">
             <section className="main-container">
-              <div className="w-full ">{children}</div>
+         
+              <div className="w-full ">
+                
+                {children}
+                
+                </div>
             </section>
+            <div className="-z-10">
+            <BackgroundBeams />
+            </div>
           </main>
         </body>
       </html>

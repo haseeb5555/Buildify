@@ -12,10 +12,11 @@ const WindowSchema = new mongoose.Schema({
     },
     milestones: [
         {
-            title: { type: String, required: true },
+            name: { type: String, required: true },
             description: { type: String, required: true },
             amount: { type: String, required: true },
             due: { type: String, required: true },
+            value:{type: Number, required: true}
         },
     ],
 

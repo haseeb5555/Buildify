@@ -27,7 +27,9 @@ export default function RootLayout({
         <body className={inter.className}>
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <Navbar />
+            <div className="-z-10">
             <BackgroundBeams />
+            </div>
             <main className="flex flex-row">
               <LeftSidebar />
               <section className="main-container">

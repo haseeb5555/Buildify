@@ -24,10 +24,11 @@ const PostValidation = z.object({
   TotalAmount: z.string().nonempty({ message: "Total Amount is required" }),
   milestones: z.array(
     z.object({
-      title: z.string(),
+      name: z.string(),
       description: z.string(),
       amount: z.string(),
       due: z.string(),
+      value: z.number()
     })
   ),
 });
@@ -44,10 +45,11 @@ const InitProject = ({ author }: { author: string }) => {
       TotalAmount: "",
       milestones: [
         {
-          title: "",
+          name: "",
           description: "",
           amount: "",
           due: "",
+          value: 0,
         },
       ],
     },
@@ -76,6 +78,7 @@ const InitProject = ({ author }: { author: string }) => {
                 TotalAmount: values.TotalAmount,
                 milestones: values.milestones,
                 author
+                
             }),
         }
          )
@@ -139,7 +142,7 @@ const InitProject = ({ author }: { author: string }) => {
             <div key={field.id} className="flex flex-col gap-4">
               <FormField
                 control={control}
-                name={`milestones.${index}.title`}
+                name={`milestones.${index}.name`}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Title</FormLabel>
@@ -210,10 +213,11 @@ const InitProject = ({ author }: { author: string }) => {
             type="button"
             onClick={() =>
               appendMilestone({
-                title: "",
+                name: "",
                 description: "",
                 amount: "",
                 due: "",
+                value:0
               })
             }
           >

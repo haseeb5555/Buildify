@@ -76,7 +76,7 @@ const CreateAnAccount = () => {
         } >
             {text}
           </Button >
-          <p className="flex gap-1 m-0">
+          <p className="flex gap-1 m-0 ">
             Already have an account?
             <Link href="/sign-in" className="hover:underline cursor-pointer">Login</Link>
           </p>
