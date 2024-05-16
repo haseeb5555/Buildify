@@ -32,10 +32,10 @@ export default function RootLayout({
               <section className="main-container">
                 <div className="w-full max-w-4xl">{children}</div>
               </section>
+              <div className="-z-10">
+                <BackgroundBeams />
+              </div>
             </main>
-            {/* <div className="-z-20">
-            <BackgroundBeams />
-            </div> */}
           </Providers>
         </body>
       </html>
