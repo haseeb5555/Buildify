@@ -27,14 +27,15 @@ export default function RootLayout({
         <body className={inter.className}>
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <Navbar />
-            <div className="-z-10">
-            <BackgroundBeams />
-            </div>
+
             <main className="flex flex-row">
               <LeftSidebar />
               <section className="main-container">
                 <div className="w-full max-w-4xl">{children}</div>
               </section>
+              <div className="-z-10">
+                <BackgroundBeams />
+              </div>
             </main>
           </Providers>
         </body>

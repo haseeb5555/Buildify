@@ -105,7 +105,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
         <h1 className="font-bold text-[35px] -mb-6">
           Tell us what you need done
         </h1>
-        <p className="text-[16px] text-gray-1">
+        <p className="text-[16px] text-cyan-500">
           Contact skilled freelancers within minutes. View profiles, ratings,
           portfolios and chat with them. Pay the freelancer only when you are
           100% satisfied with their work
@@ -143,7 +143,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
             <FormItem className="flex flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold">Budget</FormLabel>
               <FormControl className="no-focus border border-dark-4">
-                <Input type="number" {...field} />
+                <Input type="number" min={0} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
