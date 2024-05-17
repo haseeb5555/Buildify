@@ -119,7 +119,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Input {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
@@ -133,6 +133,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Textarea rows={5} {...field} />
               </FormControl>
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
@@ -145,7 +146,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Input type="number" min={0} {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
@@ -159,7 +160,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Input {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />

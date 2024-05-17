@@ -135,129 +135,230 @@ export default function ProfileForm({ user }: { user: any }) {
   }
 
   return (
-  <>
+    <>
       <h1 className="font-bold text-[24px] text-white mb-4">Create Profile</h1>
-    <Form {...form}>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
-        <div className="flex gap-8">
-          <FormField
-            control={control}
-            name="title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter title"
-                    {...field}
-                    className="account-form_input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name="company"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-[18px]">Company</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter company"
-                    {...field}
-                    className="account-form_input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name="cnic"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>CNIC</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter CNIC"
-                    {...field}
-                    className="account-form_input"
-                    type="number"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <div className="flex gap-8">
-          <FormField
-            control={control}
-            name="ntn"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>NTN</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter NTN"
-                    {...field}
-                    className="account-form_input"
-                    type="number"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter phone"
-                    {...field}
-                    className="account-form_input"
-                    type="number"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={control}
-            name="bio"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Bio</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Enter bio"
-                    {...field}
-                    rows={7}
-                    className="account-form_input"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+      <Form {...form}>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 ">
+          <div className="flex gap-8">
+            <FormField
+              control={control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter title"
+                      {...field}
+                      className="account-form_input"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[18px]">Company</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter company"
+                      {...field}
+                      className="account-form_input"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="cnic"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>CNIC</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter CNIC"
+                      {...field}
+                      className="account-form_input"
+                      type="number"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="flex gap-8">
+            <FormField
+              control={control}
+              name="ntn"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>NTN</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter NTN"
+                      {...field}
+                      className="account-form_input"
+                      type="number"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter phone"
+                      {...field}
+                      className="account-form_input"
+                      type="number"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="bio"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Bio</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Enter bio"
+                      {...field}
+                      rows={7}
+                      className="account-form_input"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-        <div>
-          <FormLabel className="text-[24px] font-bold">Experience</FormLabel>
-          {experienceFields.map((field, index) => (
-            <>
+          <div>
+            <FormLabel className="text-[24px] font-bold">Experience</FormLabel>
+            {experienceFields.map((field, index) => (
+              <>
+                <div key={field.id} className="flex  gap-4">
+                  <FormField
+                    control={control}
+                    name={`experience.${index}.title`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Title</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter title"
+                            {...field}
+                            className="account-form_input"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={control}
+                    name={`experience.${index}.company`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter company"
+                            {...field}
+                            className="account-form_input"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={control}
+                    name={`experience.${index}.from`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>From</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter from"
+                            {...field}
+                            className="account-form_input"
+                            type="date"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex gap-4">
+                  <FormField
+                    control={control}
+                    name={`experience.${index}.to`}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>To</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter to"
+                            {...field}
+                            className="account-form_input"
+                            type="date"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="mt-8 flex gap-2">
+                    {experienceFields.length > 1 && (
+                      <MinusCircleIcon
+                        onClick={() => removeExperience(index)}
+                        className="cursor-pointer h-8 w-8"
+                      />
+                    )}
+                    <PlusCircleIcon
+                      onClick={() =>
+                        appendExperience({
+                          title: "",
+                          company: "",
+                          from: "",
+                          to: "",
+                        })
+                      }
+                      className="cursor-pointer h-8 w-8"
+                    />
+                  </div>
+                </div>
+              </>
+            ))}
+          </div>
+
+          <div>
+            <FormLabel>Certification</FormLabel>
+            {certificationFields.map((field, index) => (
               <div key={field.id} className="flex  gap-4">
                 <FormField
                   control={control}
-                  name={`experience.${index}.title`}
+                  name={`certification.${index}.title`}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Title</FormLabel>
@@ -275,7 +376,7 @@ export default function ProfileForm({ user }: { user: any }) {
 
                 <FormField
                   control={control}
-                  name={`experience.${index}.company`}
+                  name={`certification.${index}.company`}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Company</FormLabel>
@@ -292,33 +393,13 @@ export default function ProfileForm({ user }: { user: any }) {
                 />
                 <FormField
                   control={control}
-                  name={`experience.${index}.from`}
+                  name={`certification.${index}.issue`}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>From</FormLabel>
+                      <FormLabel>Issue</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="Enter from"
-                          {...field}
-                          className="account-form_input"
-                          type="date"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="flex gap-4">
-                <FormField
-                  control={control}
-                  name={`experience.${index}.to`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>To</FormLabel>
-                      <FormControl>
-                        <Input
-                          placeholder="Enter to"
+                          placeholder="Enter issue"
                           {...field}
                           className="account-form_input"
                           type="date"
@@ -329,110 +410,33 @@ export default function ProfileForm({ user }: { user: any }) {
                   )}
                 />
                 <div className="mt-8 flex gap-2">
-                  <MinusCircleIcon
-                    onClick={() => removeExperience(index)}
-                    className="cursor-pointer h-8 w-8"
-                  />
+                  {certificationFields.length > 1 && (
+                    <MinusCircleIcon
+                      className="h-8 w-8"
+                      type="button"
+                      onClick={() => removeCertification(index)}
+                    />
+                  )}
                   <PlusCircleIcon
+                    className="h-8 w-8"
+                    type="button"
                     onClick={() =>
-                      appendExperience({
-                        title: "",
-                        company: "",
-                        from: "",
-                        to: "",
-                      })
+                      appendCertification({ title: "", company: "", issue: "" })
                     }
-                    className="cursor-pointer h-8 w-8"
                   />
                 </div>
               </div>
-            </>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div>
-          <FormLabel>Certification</FormLabel>
-          {certificationFields.map((field, index) => (
-            <div key={field.id} className="flex  gap-4">
-              <FormField
-                control={control}
-                name={`certification.${index}.title`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Title</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter title"
-                        {...field}
-                        className="account-form_input"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={control}
-                name={`certification.${index}.company`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Company</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter company"
-                        {...field}
-                        className="account-form_input"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={control}
-                name={`certification.${index}.issue`}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Issue</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter issue"
-                        {...field}
-                        className="account-form_input"
-                        type="date"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="mt-8 flex gap-2">
-                <MinusCircleIcon
-                  className="h-8 w-8"
-                  type="button"
-                  onClick={() => removeCertification(index)}
-                />
-                <PlusCircleIcon
-                  className="h-8 w-8"
-                  type="button"
-                  onClick={() =>
-                    appendCertification({ title: "", company: "", issue: "" })
-                  }
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <Button
-          className="w-full bg-cyan-700  hover:bg-cyan-600 "
-          type="submit"
-        >
-          Submit
-        </Button>
-      </form>
-    </Form>
+          <Button
+            className="w-full bg-cyan-700  hover:bg-cyan-600 "
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+      </Form>
     </>
   );
 }

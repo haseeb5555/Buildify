@@ -16,6 +16,7 @@ import * as z from "zod";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { MinusCircleIcon, PlusCircleIcon } from "lucide-react";
 
 const PostValidation = z.object({
   title: z.string().nonempty({ message: "Title is required" }),
@@ -24,11 +25,11 @@ const PostValidation = z.object({
   TotalAmount: z.string().nonempty({ message: "Total Amount is required" }),
   milestones: z.array(
     z.object({
-      name: z.string(),
-      description: z.string(),
-      amount: z.string(),
-      due: z.string(),
-      value: z.number()
+      name: z.string().nonempty({ message: "Name is required" }),
+      description: z.string().nonempty({ message: "Description is required" }),
+      amount: z.string().nonempty({ message: "Amount is required" }),
+      due: z.string().nonempty({ message: "Due Date is required" }),
+      value: z.number(),
     })
   ),
 });
@@ -64,27 +65,24 @@ const InitProject = ({ author }: { author: string }) => {
     name: "milestones",
   });
 
-
-    const onSubmit = async (values: z.infer<typeof PostValidation>) => {
-         await fetch('/api/room', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                title: values.title,
-                description: values.description,
-                budget: values.budget,
-                TotalAmount: values.TotalAmount,
-                milestones: values.milestones,
-                author
-                
-            }),
-        }
-         )
-         console.log(author)
-        router.push('/room')
-    }
+  const onSubmit = async (values: z.infer<typeof PostValidation>) => {
+    await fetch("/api/room", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: values.title,
+        description: values.description,
+        budget: values.budget,
+        TotalAmount: values.TotalAmount,
+        milestones: values.milestones,
+        author,
+      }),
+    });
+    console.log(author);
+    router.push("/room");
+  };
 
   return (
     <Form {...form}>
@@ -92,8 +90,8 @@ const InitProject = ({ author }: { author: string }) => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="mt-10 flex flex-col   gap-10"
       >
-        <h1 className="font-bold text-[35px] -mb-6">
-          Contract done? initiate seperate window with client to start a new
+        <h1 className="font-bold text-[35px] text-cyan-700 -mb-6">
+          Contract done? Initiate separate window with client to start a new
           journey
         </h1>
 
@@ -106,7 +104,7 @@ const InitProject = ({ author }: { author: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Input {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
@@ -120,6 +118,7 @@ const InitProject = ({ author }: { author: string }) => {
               <FormControl className="no-focus border border-dark-4">
                 <Textarea rows={5} {...field} />
               </FormControl>
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
@@ -130,14 +129,14 @@ const InitProject = ({ author }: { author: string }) => {
             <FormItem className="flex flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold">Budget</FormLabel>
               <FormControl className="no-focus border border-dark-4">
-                <Input type="number" {...field} />
+                <Input min={0} type="number" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
         <div>
-          <FormLabel>Milestones</FormLabel>
+          <FormLabel className=" font-bold text-cyan-700">Milestones</FormLabel>
           {milestoneFields.map((field, index) => (
             <div key={field.id} className="flex flex-col gap-4">
               <FormField
@@ -147,9 +146,9 @@ const InitProject = ({ author }: { author: string }) => {
                   <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl className="no-focus border border-dark-4">
-                      <Input placeholder="Enter Title" {...field} />
+                      <Input {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-700" />
                   </FormItem>
                 )}
               />
@@ -161,9 +160,9 @@ const InitProject = ({ author }: { author: string }) => {
                   <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl className="no-focus border border-dark-4">
-                      <Input placeholder="Enter Description" {...field} />
+                      <Input {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-700" />
                   </FormItem>
                 )}
               />
@@ -174,13 +173,9 @@ const InitProject = ({ author }: { author: string }) => {
                   <FormItem>
                     <FormLabel>Amount</FormLabel>
                     <FormControl className="no-focus border border-dark-4">
-                      <Input
-                        placeholder="Enter Amount"
-                        {...field}
-                        type="number"
-                      />
+                      <Input min={0} {...field} type="number" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-700" />
                   </FormItem>
                 )}
               />
@@ -192,37 +187,35 @@ const InitProject = ({ author }: { author: string }) => {
                   <FormItem>
                     <FormLabel>Due Date</FormLabel>
                     <FormControl className="no-focus border border-dark-4">
-                      <Input
-                        placeholder="Enter Due Date"
-                        {...field}
-                        type="date"
-                      />
+                      <Input {...field} type="date" />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-700" />
                   </FormItem>
                 )}
               />
-              <div className="flex flex-start mb-5">
-                <Button type="button" onClick={() => removeMilestone(index)}>
-                  Remove Milestone
-                </Button>
+
+              <div className="mt-4 mb-4 flex gap-2">
+                {milestoneFields.length > 1 && (
+                  <MinusCircleIcon
+                    onClick={() => removeMilestone(index)}
+                    className="cursor-pointer h-8 w-8"
+                  />
+                )}
+                <PlusCircleIcon
+                  onClick={() =>
+                    appendMilestone({
+                      name: "",
+                      description: "",
+                      amount: "",
+                      due: "",
+                      value: 0,
+                    })
+                  }
+                  className="cursor-pointer h-8 w-8"
+                />
               </div>
             </div>
           ))}
-          <Button
-            type="button"
-            onClick={() =>
-              appendMilestone({
-                name: "",
-                description: "",
-                amount: "",
-                due: "",
-                value:0
-              })
-            }
-          >
-            Add Milestone
-          </Button>
         </div>
 
         <FormField
@@ -232,16 +225,16 @@ const InitProject = ({ author }: { author: string }) => {
             <FormItem className="flex flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold">Total Amount</FormLabel>
               <FormControl className="no-focus border border-dark-4">
-                <Input type="number" {...field} />
+                <Input min={0} type="number" {...field} />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-700" />
             </FormItem>
           )}
         />
 
         <Button
           type="submit"
-          className="dark:bg-primary-500 bg-slate-200 text-black dark:text-light-1"
+          className=" bg-cyan-700 hover:bg-cyan-600 text-black dark:text-light-1"
         >
           Initiate
         </Button>
