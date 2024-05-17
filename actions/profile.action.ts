@@ -5,6 +5,7 @@ import { connectToDB } from "@/lib/models/connection";
 import Profile from "@/lib/models/profile.model";
 import { Project } from "@/lib/models/project.model";
 import { UserProject } from "@/lib/models/user-project.model";
+import Window from "@/lib/models/window.schema";
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
 
@@ -96,7 +97,18 @@ export async function createProfile(
           console.log(error);
         }
     }  
-   
+    export async function fetchRoomById(threadId: string) {
+      connectToDB();
+    
+      try {
+        const room = await Window.findById(threadId)
+        return room;
+      } catch (err) {
+        console.error("Error while fetching thread:", err);
+        throw new Error("Unable to fetch thread");
+      }
+    }
+    
     
 export async function fetchConstructor(userId: string) {
   try {

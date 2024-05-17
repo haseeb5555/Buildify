@@ -19,6 +19,8 @@ export async function fetchUser(userId: string) {
   }
 }
 
+
+
 interface Params {
   userId: string;
   username: string;

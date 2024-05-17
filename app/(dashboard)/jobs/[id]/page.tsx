@@ -16,8 +16,7 @@ const  Page =  async ({params}:{params:{id:string}}) => {
       if (!userInfo?.onboarded) redirect('/onboarding')
        const post = await fetchThreadById(params.id)
   return (
-     <section className="relative">
-    
+     <section className="relative">+
       <div>
       <Card
              key={post._id}

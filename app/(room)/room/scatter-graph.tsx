@@ -1,3 +1,4 @@
+import { fetchRoomById } from "@/actions/profile.action";
 import { BarList, Bold, Card, Flex, Text, Title } from "@tremor/react";
 
 const data = [
@@ -38,9 +39,22 @@ const data = [
 
 ];
 
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+interface Props{}
 const Bar = () => {
+  // const [data, setData] = useState([])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await fetchRoomById(id)
+      
+  //   }
+  //   fetchData();
+
+  // },[])
+
+  // console.log(data)
+
+
   return (
        
   <Card className="max-w-lg rounded-xl">

@@ -98,7 +98,7 @@ export const Navbar = () => {
               <Button
                 as={Link}
                 className="text-sm font-normal text-default-600 bg-white-800  hover:bg-slate-200 text-inherit dark:bg-blue-700"
-                href="/login"
+                href="/sign-in"
                 // startContent={<HeartFilledIcon className="text-danger" />}
                 variant="flat"
               >
