@@ -2,7 +2,6 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Link from "next/link";
 
-
 interface Props {
   id: string;
   title: string;
@@ -16,9 +15,15 @@ interface Props {
     due: string;
   }[];
 }
-export default function WindowCard({title, description, budget, TotalAmount, milestones,id}:Props) {
+export default function WindowCard({
+  title,
+  description,
+  budget,
+  TotalAmount,
+  milestones,
+  id,
+}: Props) {
   return (
-
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
         <CardItem
@@ -30,7 +35,7 @@ export default function WindowCard({title, description, budget, TotalAmount, mil
         <CardItem
           as="p"
           translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+          className="text-neutral-500 h-[70px] overflow-hidden  text-sm max-w-sm mt-2 dark:text-neutral-300"
         >
           {description}
         </CardItem>
@@ -44,11 +49,7 @@ export default function WindowCard({title, description, budget, TotalAmount, mil
               >
                 Budget
               </CardItem>
-              <CardItem
-                as="p"
-                translateZ="100"
-                className="  dark:text-white"
-              >
+              <CardItem as="p" translateZ="100" className="  dark:text-white">
                 {budget}
               </CardItem>
             </div>
@@ -60,14 +61,9 @@ export default function WindowCard({title, description, budget, TotalAmount, mil
               >
                 Total Amount
               </CardItem>
-              <CardItem
-                as="p"
-                translateZ="100"
-                className=" dark:text-white"
-              >
+              <CardItem as="p" translateZ="100" className=" dark:text-white">
                 {TotalAmount}
               </CardItem>
-              
             </div>
             <div className="flex flex-col">
               <CardItem
@@ -77,31 +73,25 @@ export default function WindowCard({title, description, budget, TotalAmount, mil
               >
                 Milstones
               </CardItem>
-              <CardItem
-                as="p"
-                translateZ="100"
-                className=" dark:text-white"
-              >
+              <CardItem as="p" translateZ="100" className=" dark:text-white">
                 {milestones.length}
               </CardItem>
-              
             </div>
           </div>
         </CardItem>
         <div className="flex justify-between items-center mt-10">
-        <Link href={`/room/${id}`}>
-          <CardItem
-            translateZ={20}
-            as="button"
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold
+          <Link href={`/room/${id}`}>
+            <CardItem
+              translateZ={20}
+              as="button"
+              className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold
             "
-          >
-            Join Chat 
-          </CardItem>
+            >
+              Join Chat
+            </CardItem>
           </Link>
         </div>
       </CardBody>
     </CardContainer>
   );
 }
-

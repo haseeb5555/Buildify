@@ -21,6 +21,8 @@ import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.action";
 import { usePathname, useRouter } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
+import { Toaster, toast } from "sonner";
 
 interface Props {
   user: {
@@ -34,6 +36,16 @@ interface Props {
   btnTitle: string;
 }
 const AccountProfile = ({ user, btnTitle }: Props) => {
+  const { isPending, mutate } = useMutation({
+    mutationFn: updateUser,
+    onSuccess: () => {
+      toast.success("Profile updated successfully");
+      router.push("/add-project");
+    },
+    onError: () => {
+      return toast.error("Profile update failed");
+    },
+  });
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
@@ -60,7 +72,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       }
     }
 
-    await updateUser({
+    mutate({
       bio: values.bio,
       name: values.name,
       image: values.profile_photo,
@@ -68,12 +80,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       userId: user.id,
       path: pathname,
     });
-
-    if (pathname === "/profile/edit") {
-      router.back();
-    } else {
-      router.push("/add-project");
-    }
   }
 
   const handleImage = (
@@ -175,6 +181,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="bio"
@@ -192,8 +199,12 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-cyan-700  hover:bg-cyan-600">
-          Submit
+        <Button
+          type="submit"
+          className="bg-cyan-700  hover:bg-cyan-600"
+          disabled={isPending}
+        >
+          {isPending ? "Updating..." : "Update"}
         </Button>
       </form>
     </Form>

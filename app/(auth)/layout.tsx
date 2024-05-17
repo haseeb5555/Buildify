@@ -6,6 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import Image from "next/image";
 import Topbar from "@/components/Topbar";
 import { BackgroundBeams } from "@/components/ui/backgroundBeams";
+import { QueryProvider } from "@/components/QueryPovider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,15 +28,16 @@ export default function RootLayout({
           <Topbar />
           <main className="flex flex-row px-20 py-12 max-sm:px-4">
             <section className="main-container">
-         
               <div className="w-full ">
-                
-                {children}
-                
-                </div>
+                <QueryProvider>
+                  {children}
+
+                  <Toaster duration={2000} position="top-center" richColors />
+                </QueryProvider>
+              </div>
             </section>
             <div className="-z-10">
-            <BackgroundBeams />
+              <BackgroundBeams />
             </div>
           </main>
         </body>

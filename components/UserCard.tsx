@@ -37,7 +37,7 @@ function UserCard({ id, name, username, imgUrl, personType }: Props) {
       <Button
         className=" bg-cyan-700 hover:bg-cyan-800 text-black dark:text-light-1 dark:hover:bg-cyan-600"
         onClick={() => {
-          router.push(`/profile/${id}`);
+          router.push(`/profiles/${id}`);
         }}
       >
         View

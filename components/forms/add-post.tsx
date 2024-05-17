@@ -23,6 +23,8 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { ChangeEvent, useState } from "react";
 import { image } from "@nextui-org/react";
 import { Label } from "../ui/label";
+import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
 
 const PostValidation = z.object({
   title: z.string().nonempty({ message: "Title is required" }),
@@ -35,8 +37,19 @@ const PostValidation = z.object({
 const AddPostForm = ({ userId }: { userId: string }) => {
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
-  const router = useRouter();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const { isPending, mutate } = useMutation({
+    mutationFn: createThread,
+    onSuccess: () => {
+      toast.success("Profile added succesfully");
+      router.push("/posts");
+    },
+    onError: () => {
+      return toast.error("Profile update failed");
+    },
+  });
 
   const form = useForm({
     resolver: zodResolver(PostValidation),
@@ -61,7 +74,7 @@ const AddPostForm = ({ userId }: { userId: string }) => {
         values.image = imgRes[0].fileUrl;
       }
     }
-    await createThread({
+    mutate({
       title: values.title,
       description: values.description,
       skills: values.skills,
@@ -70,8 +83,6 @@ const AddPostForm = ({ userId }: { userId: string }) => {
       image: values.image,
       path: pathname,
     });
-
-    router.push("/posts");
   };
 
   const handleImage = (
@@ -206,9 +217,10 @@ const AddPostForm = ({ userId }: { userId: string }) => {
         />
         <Button
           type="submit"
+          disabled={isPending}
           className=" bg-cyan-700 text-black dark:text-light-1 hover:bg-cyan-600 dark:hover:bg-cyan-600"
         >
-          Post Project
+          {isPending ? "Posting..." : "Post"}
         </Button>
       </form>
     </Form>

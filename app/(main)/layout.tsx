@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import LeftSidebar from "@/components/LeftSidebar";
 import Image from "next/image";
 import { BackgroundBeams } from "@/components/ui/backgroundBeams";
+import { QueryProvider } from "@/components/QueryPovider";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +33,12 @@ export default function RootLayout({
             <main className="flex flex-row">
               <LeftSidebar />
               <section className="main-container">
-                <div className="w-full max-w-4xl">{children}</div>
+                <div className="w-full max-w-4xl">
+                  <QueryProvider>
+                    {children}
+                    <Toaster richColors position="top-center" />
+                  </QueryProvider>
+                </div>
               </section>
               <div className="-z-10">
                 <BackgroundBeams />

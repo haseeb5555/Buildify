@@ -17,6 +17,8 @@ import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MinusCircleIcon, PlusCircleIcon } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 const PostValidation = z.object({
   title: z.string().nonempty({ message: "Title is required" }),
@@ -32,11 +34,30 @@ const PostValidation = z.object({
       value: z.number(),
     })
   ),
+  author: z.string().optional(),
 });
 
 const InitProject = ({ author }: { author: string }) => {
   const router = useRouter();
-
+  const { isPending, mutate } = useMutation({
+    mutationFn: async (data: z.infer<typeof PostValidation>) => {
+      const res = await fetch("/api/room", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      return res.json();
+    },
+    onSuccess: () => {
+      toast.success("Project initiated successfully");
+      router.push("/windows");
+    },
+    onError: () => {
+      return toast.error("Something went wrong");
+    },
+  });
   const form = useForm({
     resolver: zodResolver(PostValidation),
     defaultValues: {
@@ -66,22 +87,15 @@ const InitProject = ({ author }: { author: string }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof PostValidation>) => {
-    await fetch("/api/room", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: values.title,
-        description: values.description,
-        budget: values.budget,
-        TotalAmount: values.TotalAmount,
-        milestones: values.milestones,
-        author,
-      }),
-    });
-    console.log(author);
-    router.push("/room");
+    mutate({
+      title: values.title,
+      description: values.description,
+      budget: values.budget,
+      TotalAmount: values.TotalAmount,
+      milestones: values.milestones,
+      author,
+    }),
+      form.reset();
   };
 
   return (
@@ -136,7 +150,9 @@ const InitProject = ({ author }: { author: string }) => {
           )}
         />
         <div>
-          <FormLabel className=" font-bold text-cyan-700">Milestones</FormLabel>
+          <FormLabel className="  font-bold text-[18px] text-cyan-700">
+            Milestones
+          </FormLabel>
           {milestoneFields.map((field, index) => (
             <div key={field.id} className="flex flex-col gap-4">
               <FormField
@@ -160,7 +176,7 @@ const InitProject = ({ author }: { author: string }) => {
                   <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl className="no-focus border border-dark-4">
-                      <Input {...field} />
+                      <Textarea rows={3} {...field} />
                     </FormControl>
                     <FormMessage className="text-red-700" />
                   </FormItem>
@@ -233,10 +249,11 @@ const InitProject = ({ author }: { author: string }) => {
         />
 
         <Button
+          disabled={isPending}
           type="submit"
           className=" bg-cyan-700 hover:bg-cyan-600 text-black dark:text-light-1"
         >
-          Initiate
+          {isPending ? "Initiating..." : "Initiate"}
         </Button>
       </form>
     </Form>
