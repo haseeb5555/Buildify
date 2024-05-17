@@ -18,7 +18,7 @@ async function Page() {
   if (!user) return null;
   const userFromDb = await fetchUser(user.id);
   console.log(userFromDb, "userFromDb");
-  // if (userFromDb?.onboarded) redirect("/posts");
+  if (userFromDb?.onboarded) redirect("/posts");
   return (
     <main className="mx-auto flex max-w-3xl flex-col justify-start  px-10">
       <h1 className="head-text">Onboarding</h1>
