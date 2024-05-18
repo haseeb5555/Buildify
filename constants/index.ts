@@ -2,64 +2,64 @@ export type SiteConfig = typeof siteConfig;
 
 export const buildingReviews = [
 	{
-	  title: "A Four Floor Building",
-	  price: "$4000",
-	  reviewContent:
-		"Our experience with Faheem Don Constructors has been outstanding! The construction team demonstrated exceptional skill and professionalism. The attention to detail in every aspect of the project, from planning to execution, was remarkable. We highly recommend Faheem Don Constructors for their top-notch construction services.",
-	  rating: 4.5,
-	  image: "/assets/images/user.png",
-	  name: "Alice Johnson",
-	  date: "Feb 2021",
+		title: "A Four Floor Building",
+		price: "$4000",
+		reviewContent:
+			"Our experience with Faheem Don Constructors has been outstanding! The construction team demonstrated exceptional skill and professionalism. The attention to detail in every aspect of the project, from planning to execution, was remarkable. We highly recommend Faheem Don Constructors for their top-notch construction services.",
+		rating: 4.5,
+		image: "/assets/images/user.png",
+		name: "Alice Johnson",
+		date: "Feb 2021",
 	},
 	{
-	  title: "Modern Apartment Complex",
-	  price: "$6000",
-	  reviewContent:
-		"We are thrilled with the Modern Apartment Complex built by Urban Builders. The architectural design is innovative, and the construction quality is superb. Urban Builders exceeded our expectations, delivering a luxurious living space. We highly endorse their services.",
-	  rating: 4.8,
-	  image: "/assets/images/user.png",
-	  name: "Bob Smith",
-	  date: "Jan 2021",
+		title: "Modern Apartment Complex",
+		price: "$6000",
+		reviewContent:
+			"We are thrilled with the Modern Apartment Complex built by Urban Builders. The architectural design is innovative, and the construction quality is superb. Urban Builders exceeded our expectations, delivering a luxurious living space. We highly endorse their services.",
+		rating: 4.8,
+		image: "/assets/images/user.png",
+		name: "Bob Smith",
+		date: "Jan 2021",
 	},
 	{
-	  title: "Commercial Office Tower",
-	  price: "$10,000",
-	  reviewContent:
-		"XYZ Construction Group did an excellent job constructing our commercial office tower. Their project management skills ensured a smooth construction process. The office spaces are well-designed and functional. We are extremely satisfied with the outcome.",
-	  rating: 4.2,
-	  image: "/assets/images/user.png",
-	  name: "Charlie Brown",
-	  date: "Dec 2020",
+		title: "Commercial Office Tower",
+		price: "$10,000",
+		reviewContent:
+			"XYZ Construction Group did an excellent job constructing our commercial office tower. Their project management skills ensured a smooth construction process. The office spaces are well-designed and functional. We are extremely satisfied with the outcome.",
+		rating: 4.2,
+		image: "/assets/images/user.png",
+		name: "Charlie Brown",
+		date: "Dec 2020",
 	},
 	// Add more building reviews as needed
-  ];
-  export const posts= [
+];
+export const posts = [
 	{
-	  profile: {
-		name: "John Doe",
-		username: "john_doe",
-		imageSrc: 'assets/images/user.png',
-	  },
-	  tweet: `
+		profile: {
+			name: "John Doe",
+			username: "john_doe",
+			imageSrc: 'assets/images/user.png',
+		},
+		tweet: `
 	  🏗️ Freelance Building Constructor: Transform your vision into reality with my expertise. From personalized approaches to transparent communication, expect top-notch craftsmanship, on-time delivery, and budget-friendly solutions. Let's build something amazing! 🏡🔨
 	  `,
-	  likes: 123,
-	  retweets: 45,
-	  timestamp: "10:30 AM · Sep 1, 2023",
+		likes: 123,
+		retweets: 45,
+		timestamp: "10:30 AM · Sep 1, 2023",
 	},
 	{
-	  profile: {
-		name: "Jane Smith",
-		username: "jane_smith",
-		imageSrc: 'assets/images/user.png',
-	  },
-	  tweet: `🏗️ Freelance Building Constructor: Transform your vision into reality with my expertise. From personalized approaches to transparent communication, expect top-notch craftsmanship, on-time delivery, and budget-friendly solutions. Let's build something amazing! 🏡🔨 `,
-	  likes: 210,
-	  retweets: 87,
-	  timestamp: "2:45 PM · Sep 1, 2023",
+		profile: {
+			name: "Jane Smith",
+			username: "jane_smith",
+			imageSrc: 'assets/images/user.png',
+		},
+		tweet: `🏗️ Freelance Building Constructor: Transform your vision into reality with my expertise. From personalized approaches to transparent communication, expect top-notch craftsmanship, on-time delivery, and budget-friendly solutions. Let's build something amazing! 🏡🔨 `,
+		likes: 210,
+		retweets: 87,
+		timestamp: "2:45 PM · Sep 1, 2023",
 	},
 	// Add more dummy data as needed
-  ];
+];
 export const userProfiles = [
 	{
 		banner: "/assets/images/user.png",
@@ -113,7 +113,7 @@ export const siteConfig = {
 	name: "Next.js + NextUI",
 	description: "Make beautiful websites regardless of your design experience.",
 	navItems: [
-		
+
 	],
 	navMenuItems: [
 		{
@@ -159,68 +159,68 @@ export const siteConfig = {
 };
 
 export const C_sidebarLinks = [
- 
-    {
-      imgURL: "/assets/heart.svg",
-      route: "/chat",
-      label: "Chat",
-    },
-    {
-      imgURL: "/assets/create.svg",
-      route: "/init-project",
-      label: "Init Window",
-    },
-   
-    {
-      imgURL: "/assets/user.svg",
-      route: "/constructor-profiles",
-      label: "Constructor Profiles",
-    },
+
+	{
+		imgURL: "/assets/heart.svg",
+		route: "/chat",
+		label: "Chat",
+	},
+	{
+		imgURL: "/assets/create.svg",
+		route: "/init-project",
+		label: "Init Window",
+	},
+	{
+		imgURL: "/assets/search.svg",
+		route: "/search-client",
+		label: "Search Clients",
+	},
+
 	{
 		imgURL: "/assets/user.svg",
 		route: "/jobs",
 		label: "Jobs"
-	  },
-	  {
+	},
+	{
 		imgURL: "/assets/user.svg",
 		route: "/cp",
 		label: "Profile",
-	  },
-  ];
+	},
+];
 
 export const sidebarLinks = [
-    {
-      imgURL: "/assets/home.svg",
-      route: "/posts",
-      label: "Home",
-    },
-    {
-      imgURL: "/assets/search.svg",
-      route: "/search",
-      label: "Search",
-    },
-    {
-      imgURL: "/assets/heart.svg",
-      route: "/chat",
-      label: "Chat",
-    },
-    {
-      imgURL: "/assets/create.svg",
-      route: "/add-project",
-      label: "Create Project",
-    },
-   
-    {
-      imgURL: "/assets/user.svg",
-      route: "/profiles",
-      label: "Constructor Profiles",
-    },
+	{
+		imgURL: "/assets/home.svg",
+		route: "/posts",
+		label: "Home",
+	},
+	{
+		imgURL: "/assets/search.svg",
+		route: "/search",
+		label: "Search",
+	},
+	{
+		imgURL: "/assets/heart.svg",
+		route: "/chat",
+		label: "Chat",
+	},
+	{
+		imgURL: "/assets/create.svg",
+		route: "/add-project",
+		label: "Create Project",
+	},
+
+	{
+		imgURL: "/assets/user.svg",
+		route: "/profiles",
+		label: "Constructor Profiles",
+	},
 	{
 		imgURL: "/assets/user.svg",
 		route: "/profile",
 		label: "Profile",
-	  },
-  ];
+	},
+];
 
 
 export const navMenuItems = [

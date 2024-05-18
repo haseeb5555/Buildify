@@ -16,9 +16,6 @@ async function Page({
   const user = await currentUser();
   if (!user) return null;
 
-  const userInfo = await fetchUser(user.id);
-  if (!userInfo?.onboarded) redirect("/onboarding");
-
   const result = await fetchUsers({
     userId: user.id,
     searchString: searchParams.q,
@@ -28,13 +25,15 @@ async function Page({
 
   return (
     <section>
-      <h1 className='head-text mb-10'>Search</h1>
+      <h1 className="head-text mb-10">Search</h1>
 
-      <Searchbar routeType='sc' />
+      <Searchbar routeType="search-client" />
 
-      <div className='mt-14 flex flex-col gap-9'>
+      <div className="mt-14 flex flex-col gap-9">
         {result.users.length === 0 ? (
-          <p className='no-result'>No Result</p>
+          <p className="text-heading3-bold text-light-1 text-center">
+            | Sorry! No Result Found :(
+          </p>
         ) : (
           <>
             {result.users.map((person) => (
@@ -45,7 +44,7 @@ async function Page({
                 name={person.name}
                 username={person.username}
                 imgUrl={person.image}
-                personType='User'
+                personType="User"
               />
             ))}
           </>
@@ -53,7 +52,7 @@ async function Page({
       </div>
 
       <Pagination
-        path='search'
+        path="search-client"
         pageNumber={searchParams?.page ? +searchParams.page : 1}
         isNext={result.isNext}
       />

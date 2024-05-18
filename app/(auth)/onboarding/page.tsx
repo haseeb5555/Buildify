@@ -1,10 +1,14 @@
 import AccountProfile from "@/components/forms/AcountProfile";
 import { fetchUser } from "@/lib/actions/user.action";
-import { currentUser } from "@clerk/nextjs";
+import { clerkClient, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 async function Page() {
   const user = await currentUser();
+  if (!user) return null;
+  const metadata = await clerkClient.users.getUser(user.id);
+  const existingUser = metadata.privateMetadata;
+  if (existingUser.role === "constructor") redirect("/jobs");
   const userInfo = {};
 
   const userData = {

@@ -7,6 +7,7 @@ import User from "../models/user.model";
 
 import { connectToDB } from "../models/connection";
 import Post from "../models/post.model";
+import { clerkClient } from "@clerk/nextjs";
 
 
 export async function fetchUser(userId: string) {
@@ -53,6 +54,12 @@ export async function updateUser({
       { upsert: true }
     );
 
+    await clerkClient.users.updateUser(userId, {
+      privateMetadata: {
+        role: 'client'
+      }
+    })
+
     if (path === "/profile/edit") {
       revalidatePath(path);
     }
@@ -71,7 +78,7 @@ export async function fetchUserPosts(userId: string) {
     const posts = await User.findOne({ id: userId }).populate({
       path: "posts",
       model: Post,
-      populate:[
+      populate: [
         {
           path: "children",
           model: Post,

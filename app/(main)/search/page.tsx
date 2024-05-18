@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+import { clerkClient, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import UserCard from "@/components/UserCard";
@@ -16,7 +16,9 @@ async function Page({
 }) {
   const user = await currentUser();
   if (!user) return null;
-
+  const metadata = await clerkClient.users.getUser(user.id);
+  const existingUser = metadata.privateMetadata;
+  if (existingUser.role === "constructor") redirect("/jobs");
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
@@ -48,7 +50,7 @@ async function Page({
                 name={person.name}
                 username={person.username}
                 imgUrl={person.image}
-                personType="constructor"
+                personType="Client"
               />
             ))}
           </>
