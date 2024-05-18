@@ -9,7 +9,6 @@ export default async function Home() {
 
   return (
     <>
-   
       <Hero />
       <Services />
       <Why />
