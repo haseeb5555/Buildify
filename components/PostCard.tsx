@@ -79,7 +79,7 @@ function Card({
 
             <h3 className="text-base-semibold mt-2">{title}</h3>
             <p className="mt-2 text-small-regular ">
-              {isComment ? text : budget}-$
+              {isComment ? text : budget + "$"}
             </p>
 
             <p className="mt-2 text-small-regular ">{description}</p>
