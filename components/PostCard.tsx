@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import DropDown from "./drop-down";
 
 interface Props {
   id: string;
@@ -49,6 +50,11 @@ function Card({
           : "dark:shadow dark:shadow-cyan-700  p-7"
       }`}
     >
+      <DropDown
+        currentUserId={currentUserId}
+        authorId={author.id}
+        postId={id}
+      />
       <div className="flex items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">
           <div className="flex flex-col items-center">

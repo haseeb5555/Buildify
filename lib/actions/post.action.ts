@@ -12,7 +12,7 @@ import Comment from "../models/comment.model";
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
 
- 
+
   const skipAmount = (pageNumber - 1) * pageSize;
 
 
@@ -24,13 +24,13 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
       path: "author",
       model: User,
     })
-    
+
     .populate({
-      path: "children", 
+      path: "children",
       populate: {
         path: "author",
         model: User,
-        select: "_id name parentId image", 
+        select: "_id name parentId image",
       },
     });
 
@@ -47,34 +47,34 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
-    title: string,
-    description: string,
-    skills:string,
-    budget:string,
+  title: string,
+  description: string,
+  skills: string,
+  budget: string,
 
   author: string,
   path: string,
-  image?:string
+  image?: string
 }
 
-export async function createThread({ title, budget,description,skills,author,image, path }: Params
+export async function createThread({ title, budget, description, skills, author, image, path }: Params
 ) {
   try {
     connectToDB();
     const createdThread = await Post.create({
-        title,
-        description,
-        budget,
-        skills,
-        author,
-        image// Assign communityId if provided, or leave it null for personal account
+      title,
+      description,
+      budget,
+      skills,
+      author,
+      image// Assign communityId if provided, or leave it null for personal account
     });
     await User.findByIdAndUpdate(author, {
       $push: { posts: createdThread._id },
     });
     revalidatePath(path);
   } catch (error: any) {
-     console.log(error);
+    console.log(error);
   }
 }
 
@@ -95,7 +95,7 @@ export async function deleteThread(id: string, path: string): Promise<void> {
     connectToDB();
 
     // Find the thread to be deleted (the main thread)
-    const mainThread = await Post.findById(id).populate("author community");
+    const mainThread = await Post.findById(id)
 
     if (!mainThread) {
       throw new Error("Thread not found");
@@ -134,7 +134,7 @@ export async function deleteThread(id: string, path: string): Promise<void> {
       { $pull: { posts: { $in: descendantThreadIds } } }
     );
 
-    
+
     revalidatePath(path);
   } catch (error: any) {
     throw new Error(`Failed to delete thread: ${error.message}`);

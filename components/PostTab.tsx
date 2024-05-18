@@ -14,6 +14,7 @@ const PostsTab = async ({ currentUserId, accountId, accountType }: Props) => {
   let result: any;
   result = await fetchUserPosts(accountId);
   if (!result) redirect("/add-project");
+
   return (
     <section className="mt-9 flex flex-col gap-10">
       <Label>My Posts</Label>
