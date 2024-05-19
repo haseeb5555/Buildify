@@ -10,7 +10,7 @@ function Sidebar() {
   const pathname = usePathname();
   const { userId } = useAuth();
   return (
-    <section className="custom-scrollbar leftsidebar pl-4">
+    <section className="custom-scrollbar leftsidebar pl-4 w-[230px]">
       <div className="flex w-full flex-1 flex-col gap">
         {C_sidebarLinks.map((link) => {
           const isActive =

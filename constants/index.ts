@@ -168,7 +168,7 @@ export const C_sidebarLinks = [
 	{
 		imgURL: "/assets/create.svg",
 		route: "/init-project",
-		label: "Init Window",
+		label: "Initiate Window",
 	},
 	{
 		imgURL: "/assets/search.svg",

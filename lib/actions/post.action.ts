@@ -89,7 +89,7 @@ async function fetchAllChildThreads(threadId: string): Promise<any[]> {
 
   return descendantThreads;
 }
-export async function updateThread(id: string, title: string, description: string, budget: string, skills: string, pathname: string, image?: string): Promise<void> {
+export async function updateThread(id: string, title: string, description: string, budget: string, skills: string, pathname: string): Promise<void> {
   try {
     connectToDB();
 
@@ -98,7 +98,7 @@ export async function updateThread(id: string, title: string, description: strin
       description,
       budget,
       skills,
-      image,
+
     });
 
     if (!updatedThread) {

@@ -37,18 +37,30 @@ interface Props {
   currentUserId: string;
   authorId: string;
   postId: string;
+  posttitle: string;
+  postdescription: string;
+  postbudget: string;
+  postskills: string;
 }
-const DropDown = ({ currentUserId, authorId, postId }: Props) => {
+const DropDown = ({
+  currentUserId,
+  authorId,
+  postId,
+  posttitle,
+  postbudget,
+  postdescription,
+  postskills,
+}: Props) => {
   const pathname = usePathname();
 
   const [form, setForm] = useState({
-    title: "",
-    budget: "",
-    description: "",
-    skills: "",
-    image: "",
+    title: posttitle || "",
+    budget: postbudget || "",
+    description: postdescription || "",
+    skills: postskills || "",
   });
-  const { title, budget, description, skills, image } = form;
+  const { title, budget, description, skills } = form;
+
   const handleDelete = async () => {
     const res = await deleteThread(postId, pathname);
     return res;
@@ -60,7 +72,6 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
       budget,
       description,
       skills,
-      image,
       pathname
     );
     return res;
@@ -71,10 +82,9 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
     await handleUpdate();
     setForm({
       title: "",
-      description: "",
       budget: "",
+      description: "",
       skills: "",
-      image: "",
     });
   };
 
@@ -115,7 +125,7 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-          {/* <Dialog>
+          <Dialog>
             <DialogTrigger asChild>
               <Image
                 src="/assets/edit.svg"
@@ -139,6 +149,7 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
                     Title
                   </Label>
                   <Input
+                    required
                     id="title"
                     value={title}
                     className="col-span-3"
@@ -147,19 +158,7 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
                     }
                   />
                 </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="description" className="text-right">
-                    Description
-                  </Label>
-                  <Textarea
-                    id="description"
-                    value={description}
-                    className="col-span-3"
-                    onChange={(e) =>
-                      setForm({ ...form, description: e.target.value })
-                    }
-                  />
-                </div>
+
                 <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="budget" className="text-right">
                     budget
@@ -167,6 +166,7 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
                   <Input
                     type="number"
                     id="budget"
+                    required
                     value={budget}
                     className="col-span-3"
                     onChange={(e) =>
@@ -175,10 +175,26 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="description" className="text-right">
+                    Description
+                  </Label>
+                  <Textarea
+                    required
+                    id="description"
+                    value={description}
+                    className="col-span-3"
+                    onChange={(e) =>
+                      setForm({ ...form, description: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4"></div>
+                <div className="grid grid-cols-4 items-center gap-4">
                   <Label htmlFor="skills" className="text-right">
                     skills
                   </Label>
                   <Input
+                    required
                     id="skills"
                     value={skills}
                     className="col-span-3"
@@ -187,19 +203,23 @@ const DropDown = ({ currentUserId, authorId, postId }: Props) => {
                     }
                   />
                 </div>
-                <DialogFooter>
+
+                <DialogFooter className="flex flex-end gap-2">
                   <DialogClose>
-                    <Button
-                      className="bg-cyan-700 hover:bg-cyan-600"
-                      type="submit"
-                    >
-                      Update
+                    <Button className="bg-red-700 hover:bg-red-800">
+                      Cancel
                     </Button>
                   </DialogClose>
+                  <Button
+                    className="bg-cyan-700 hover:bg-cyan-600"
+                    type="submit"
+                  >
+                    Update
+                  </Button>
                 </DialogFooter>
               </form>
             </DialogContent>
-          </Dialog> */}
+          </Dialog>
         </div>
       )}
     </>

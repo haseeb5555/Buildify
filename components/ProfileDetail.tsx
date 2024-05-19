@@ -39,7 +39,7 @@ const ProfileDetail = ({
             "
                 >
                   <h2 className="text-left text-heading3-bold ">{name}</h2>
-                  <p className="text-gray-1 text-base-medium "> @username</p>
+                  <p className="text-gray-1 text-base-medium "> @{name}12</p>
                 </div>
                 <div className="flex gap-2">
                   <svg

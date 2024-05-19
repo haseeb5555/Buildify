@@ -10,7 +10,7 @@ function LeftSidebar() {
   const pathname = usePathname();
   const { userId } = useAuth();
   return (
-    <section className="custom-scrollbar leftsidebar pl-4">
+    <section className="custom-scrollbar leftsidebar pl-4 w-[230px]">
       <div className="flex w-full flex-1 flex-col gap">
         {sidebarLinks.map((link) => {
           const isActive =
@@ -30,7 +30,10 @@ function LeftSidebar() {
                 height={24}
                 className="invert dark:invert-0"
               />
-              <p className=" max-lg:hidden"> {link.label}</p>
+              <p className="dark:text-light-1 text-black-1 max-lg:hidden">
+                {" "}
+                {link.label}
+              </p>
             </Link>
           );
         })}
