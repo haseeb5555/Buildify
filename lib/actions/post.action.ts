@@ -89,7 +89,27 @@ async function fetchAllChildThreads(threadId: string): Promise<any[]> {
 
   return descendantThreads;
 }
+export async function updateThread(id: string, title: string, description: string, budget: string, skills: string, pathname: string, image?: string): Promise<void> {
+  try {
+    connectToDB();
 
+    const updatedThread = await Post.findByIdAndUpdate(id, {
+      title,
+      description,
+      budget,
+      skills,
+      image,
+    });
+
+    if (!updatedThread) {
+      throw new Error("Thread not found");
+    }
+
+    revalidatePath(pathname);
+  } catch (error: any) {
+    console.log(error);
+  }
+}
 export async function deleteThread(id: string, path: string): Promise<void> {
   try {
     connectToDB();
