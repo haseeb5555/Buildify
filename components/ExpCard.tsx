@@ -30,8 +30,8 @@ export default function ExpCard({
           <h3 className="text-lg font-bold text-gray-900 dark:text-slate-200">{company}</h3>
           <p className="text-sm text-gray-600">{title}</p>
           <div className="text-xs text-gray-500">
-            <p > <span className="font-bold text-">Start Date:</span> {startDate.toString().slice(0,15)}</p>
-            <p><span className="font-bold">End Date:</span> {endDate.toString().slice(0,15)}</p>
+            <p > <span className="font-bold text-">Start Date:</span> {startDate?.toString().slice(0,15)}</p>
+            <p><span className="font-bold">End Date:</span> {endDate?.toString().slice(0,15)}</p>
           </div>
         </div>
       </CardContent>

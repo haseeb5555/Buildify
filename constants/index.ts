@@ -220,6 +220,11 @@ export const sidebarLinks = [
 		route: "/profile",
 		label: "Profile",
 	},
+	{
+		imgURL: "/assets/user.svg",
+		route: "/ai-assistant",
+		label: "AI Assistant ✨ ",
+	},
 ];
 
 

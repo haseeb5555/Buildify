@@ -1,7 +1,7 @@
 import Pusher from 'pusher'
+import PusherClient from 'pusher-js'
 
-
-const pusher = new Pusher({
+export const pusherServer = new Pusher({
     appId: "1805139",
     key: "dccc95725049b43cef0a",
     secret: "d1d56135eb58276202eb",
@@ -9,6 +9,13 @@ const pusher = new Pusher({
     useTLS: true
 });
 
-pusher.trigger("my-channel", "my-event", {
-    message: "hello world"
-});
+export const pusherClient = new PusherClient("dccc95725049b43cef0a", {
+    cluster: 'ap2',
+    authEndpoint: '/api/pusher-auth',
+    authTransport: 'ajax',
+    auth: {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  })
