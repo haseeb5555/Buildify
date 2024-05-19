@@ -34,10 +34,8 @@ export default function RootLayout({
               <LeftSidebar />
               <section className="main-container">
                 <div className="w-full max-w-4xl">
-                  <QueryProvider>
-                    {children}
-                    <Toaster richColors position="top-center" />
-                  </QueryProvider>
+                  <QueryProvider>{children}</QueryProvider>
+                  <Toaster richColors position="top-center" />
                 </div>
               </section>
               <div className="-z-10">

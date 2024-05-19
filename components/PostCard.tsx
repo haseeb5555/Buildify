@@ -54,6 +54,10 @@ function Card({
         currentUserId={currentUserId}
         authorId={author.id}
         postId={id}
+        posttitle={title}
+        postdescription={description}
+        postbudget={budget}
+        postskills={skills}
       />
       <div className="flex items-start justify-between">
         <div className="flex w-full flex-1 flex-row gap-4">

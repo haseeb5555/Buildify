@@ -13,12 +13,13 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MinusCircleIcon, PlusCircleIcon } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 const PostValidation = z.object({
   title: z.string().nonempty({ message: "Title is required" }),
@@ -39,6 +40,7 @@ const PostValidation = z.object({
 
 const InitProject = ({ author }: { author: string }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const { isPending, mutate } = useMutation({
     mutationFn: async (data: z.infer<typeof PostValidation>) => {
       const res = await fetch("/api/room", {
@@ -76,7 +78,7 @@ const InitProject = ({ author }: { author: string }) => {
       ],
     },
   });
-  const { control } = form;
+  const { control, watch, setValue } = form;
   const {
     fields: milestoneFields,
     append: appendMilestone,
@@ -97,7 +99,19 @@ const InitProject = ({ author }: { author: string }) => {
     }),
       form.reset();
   };
+  useEffect(() => {
+    // <-- Added this useEffect block
+    const subscription = watch((value, { name }) => {
+      if (name && name.startsWith("milestones")) {
+        const total = value.milestones.reduce((acc, milestone) => {
+          return acc + (parseFloat(milestone.amount) || 0);
+        }, 0);
+        setValue("TotalAmount", total.toFixed(2)); // Ensure TotalAmount is a string and formatted correctly
+      }
+    });
 
+    return () => subscription.unsubscribe();
+  }, [watch, setValue]);
   return (
     <Form {...form}>
       <form
@@ -241,7 +255,7 @@ const InitProject = ({ author }: { author: string }) => {
             <FormItem className="flex flex-col gap-3 w-full">
               <FormLabel className="text-base-semibold">Total Amount</FormLabel>
               <FormControl className="no-focus border border-dark-4">
-                <Input min={0} type="number" {...field} />
+                <Input min={0} type="number" readOnly {...field} />
               </FormControl>
               <FormMessage className="text-red-700" />
             </FormItem>
