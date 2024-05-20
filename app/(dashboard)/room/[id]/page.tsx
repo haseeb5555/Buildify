@@ -14,9 +14,7 @@ const RoomPage = async({params}:{params:{id:string}}) => {
         id={room._id}
         title={room.title}
         description={room.description}
-        milestones={room.milestones}
-
-       
+   
        /> 
    </div>
   )

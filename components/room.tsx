@@ -215,7 +215,6 @@ export default function Room({title,description,id}:Props) {
     valueFormatter: formatters[selectedKpi],
     yAxisWidth: 60,
   };
-  const [search, setSearch] = useState("");
   return (
     <div className="w-full flex flex-col justify-start items-start gap-4 max-sm:flex-col">
    
@@ -232,7 +231,7 @@ export default function Room({title,description,id}:Props) {
    
         <TabPanels>
           <TabPanel>
-         <Bar />
+         <Bar  />
             <div className="mt-6 ">
               <Card className="rounded-xl ">
                 <>
@@ -276,46 +275,6 @@ export default function Room({title,description,id}:Props) {
             </div>
           </TabPanel>
    
-          <Dialog>
-        <DialogTrigger asChild>
-          <Button>Update Milestones</Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] md:max-w-[500px] lg:max-w-[600px]">
-          <DialogHeader>
-            <DialogTitle>Update Milestones</DialogTitle>
-            <DialogDescription>Make changes to your construction milestones here.</DialogDescription>
-          </DialogHeader>
-          <div className="flex flex-col justify-center items-center gap-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right" htmlFor="foundation">
-                Found
-              </Label>
-              <Input className="col-span-3" defaultValue="80" id="foundation" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right" htmlFor="framing">
-                Framing
-              </Label>
-              <Input className="col-span-3" defaultValue="60" id="framing" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right" htmlFor="electrical">
-                Electrical
-              </Label>
-              <Input className="col-span-3" defaultValue="40" id="electrical" />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <Label className="text-right" htmlFor="drywall">
-                Drywall
-              </Label>
-              <Input className="col-span-3" defaultValue="30" id="drywall" />
-            </div>
-          </div>
-          <DialogFooter>
-            <Button type="submit">Save Changes</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
           <TabPanel>
             <div className="mt-6 w-full">
               <Card>
