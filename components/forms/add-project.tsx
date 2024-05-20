@@ -16,6 +16,7 @@ import { useUploadThing } from "@/lib/uploadthing"
 import { createProject } from "@/actions/profile.action"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
+import { PlusIcon } from "lucide-react"
 
 const projectSchema = z.object({
     title: z.string(),
@@ -82,7 +83,7 @@ export default function AddProject({author}:{author:string}) {
     <div className="flex justify-center">
        <Dialog>
        <DialogTrigger>
-         <Button>Add Project</Button>    
+         <Button className="bg-transparent "><PlusIcon /></Button>    
         </DialogTrigger> 
        <DialogContent > 
       <Card className="w-full max-w-md border-none">
