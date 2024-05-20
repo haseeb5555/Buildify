@@ -31,12 +31,12 @@ export default function Chat() {
   }, [messages])
 
   return (
-    <section className='text-zinc-700'>
+    <section className='text-slate-200'>
       <div className='container flex h-screen flex-col items-center justify-center'>
         <h1 className='font-serif text-2xl font-medium'>AI Assistant</h1>
         <div className='mt-4 w-full '>
           <ScrollArea
-            className='mb-2 h-[400px] rounded-md border p-4'
+            className='mb-2 h-[500px] rounded-md p-4'
             ref={ref}
           >
             {error && (
@@ -52,7 +52,7 @@ export default function Chat() {
                     </Avatar>
                     <div className='mt-1.5'>
                       <p className='font-semibold'>You</p>
-                      <div className='mt-1.5 text-sm text-zinc-500'>
+                      <div className='mt-1.5 text-sm text-slate-500 '>
                         {m.content}
                       </div>
                     </div>
@@ -72,7 +72,7 @@ export default function Chat() {
                         <p className='font-semibold'>Bot</p>
                         <CopyToClipboard message={m} className='-mt-1' />
                       </div>
-                      <div className='mt-2 text-sm text-zinc-500'>
+                      <div className='mt-2 text-sm text-slate-500'>
                         {m.content}
                       </div>
                     </div>
@@ -87,7 +87,7 @@ export default function Chat() {
               value={input}
               onChange={handleInputChange}
               placeholder='Ask me anything...'
-              className='pr-12 placeholder:italic placeholder:text-zinc-600/75 focus-visible:ring-zinc-500'
+              className='pr-12 placeholder:italic placeholder:text-zinc-600/75 focus-visible:ring-zinc-500 border-[1px] rounded-full '
             />
             <Button
               size='icon'

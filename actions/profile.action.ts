@@ -1,6 +1,5 @@
 'use server'
 
-
 import { connectToDB } from "@/lib/models/connection";
 import Profile from "@/lib/models/profile.model";
 import { Project } from "@/lib/models/project.model";
@@ -215,6 +214,15 @@ export async function fetchProfiles() {
   try {
     connectToDB();
     return await Profile.find();
+  } catch (error: any) {
+    console.log(error);
+  }
+}
+
+export async function fetchProjects(){
+  try {
+    connectToDB();
+    return await UserProject.find();
   } catch (error: any) {
     console.log(error);
   }

@@ -4,8 +4,9 @@ import ContactCard from "./ContactCard";
 import ExpCard from "./ExpCard";
 import AddProject from "./forms/add-project";
 import { Badge } from "./ui/badge";
+import { fetchProjects } from "@/actions/profile.action";
 
-const ProfileDetail = ({
+const ProfileDetail = async({
   title,
   company,
   ntn,
@@ -15,10 +16,11 @@ const ProfileDetail = ({
   image,
   experience,
   certification,
-  projects,
   name,
   author,
 }: any) => {
+ const projects =await fetchProjects();
+  if (!projects) return null;
   return (
     <div className="w-full flex flex-col  max-w-[1440px] gap-8 max-sm:px-4">
       <div className="flex justify-start items-start w-full gap-8 max-sm:flex-col max-sm:items-center">
@@ -122,7 +124,39 @@ const ProfileDetail = ({
           ))}
         </div>
       </div>
-      <h2 className="text-20 font-bold">Reviews</h2>
+      
+      <div className="flex flex-wrap gap-2 max-sm:gap-2 mt-4">
+    
+
+       { projects?.map((project: any, index: any) => (
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+             <div className="relative group overflow-hidden rounded-lg cursor-pointer">
+           <div className="aspect-[4/3] md:aspect-[16/9] bg-gray-100 dark:bg-gray-800 overflow-hidden">
+          <img
+            alt="Project Image"
+            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+            height={600}
+            src={project.image}
+            style={{
+              aspectRatio: "1800/1900",
+              objectFit: "cover",
+            }}
+            width={800}
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/70 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h3 className="text-white text-lg font-semibold">{project.title}</h3>
+          <p className="text-gray-300 text-sm mt-1 line-clamp-2">
+           {project.description}
+          </p>
+        </div>
+      </div>
+   
+      </div>
+        ))
+}
+</div>
+<h2 className="text-20 font-bold">Reviews</h2>
       <div className="space-y-6">
         {buildingReviews.map((review, index) => (
           <div

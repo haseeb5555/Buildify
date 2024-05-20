@@ -6,15 +6,16 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import {z} from 'zod'
-import {useForm} from 'react-hook-form'
+import {FormProvider, useForm} from 'react-hook-form'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Dialog, DialogTrigger,DialogContent } from "../ui/dialog"
-import { FormField } from "../ui/form"
+import { FormControl, FormField, FormItem, FormLabel } from "../ui/form"
 import { isBase64Image } from "@/lib/utils"
 import { ChangeEvent, useState } from "react"
 import { useUploadThing } from "@/lib/uploadthing"
 import { createProject } from "@/actions/profile.action"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 
 const projectSchema = z.object({
     title: z.string(),
@@ -51,7 +52,7 @@ export default function AddProject({author}:{author:string}) {
        await createProject({
         title: values.title,
         description: values.description,
-        image: 'https://via.placeholder.com/150',
+        image: values.image,
         author:author,
         path:pathname
        }) 
@@ -90,6 +91,7 @@ export default function AddProject({author}:{author:string}) {
           <CardDescription>Fill out the form to create a new project.</CardDescription>
         </CardHeader>
         <CardContent>
+        <FormProvider {...form}>
           <form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
             <div className="grid gap-1.5">
               <Label htmlFor="title">Title</Label>
@@ -113,12 +115,54 @@ export default function AddProject({author}:{author:string}) {
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="image">Image</Label>
+              
+              <FormField
+          control={form.control}
+          name="image"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-4">
+              <FormLabel className="">
+                {field.value && (
+                  <Image
+                    src={field.value}
+                    alt="image"
+                    width={96}
+                    height={96}
+                    priority
+                    className="rounded-lg object-contain"
+                  />
+                  // ):(
+
+                  //   <Image
+                  //   src="/assets/profile.svg"
+                  //   alt="profile_photo"
+                  //   width={24}
+                  //   height={24}
+
+                  //   className=" object-contain"
+                  //  />
+                )}
+              </FormLabel>
+              <FormControl className="flex-1 text-base-semibold ">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  placeholder="Upload a photo"
+                  className=""
+                  onChange={(e) => handleImage(e, field.onChange)}
+                />
+              </FormControl>
+            </FormItem>
+           
+          )}
+        />
                 
             </div>
             <Button className="justify-self-end" type="submit">
               Create Project
             </Button>
           </form>
+          </FormProvider>
         </CardContent>
       </Card>
         </DialogContent>
