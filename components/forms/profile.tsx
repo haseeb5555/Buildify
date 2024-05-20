@@ -57,6 +57,9 @@ export const ProfileSchema = z.object({
   bio: z.string().min(10, {
     message: "Bio must be at least 10 characters.",
   }),
+  location: z.string().min(2, {
+    message: "Location must be at least 2 characters.",
+  }),
 
   experience: z.array(
     z
@@ -113,6 +116,7 @@ export default function ProfileForm({ user }: { user: any }) {
       cnic: "",
       phone: "",
       bio: "",
+      location: "",
       experience: [
         {
           title: "",
@@ -160,6 +164,7 @@ export default function ProfileForm({ user }: { user: any }) {
       cnic: values.cnic,
       phone: values.phone,
       bio: values.bio,
+      location: values.location,
       experience: values.experience,
       certification: values.certification,
       path: path,
@@ -176,7 +181,7 @@ export default function ProfileForm({ user }: { user: any }) {
               Create Profile
             </h1>
             <Separator className="bg-cyan-700 " />
-            <div className="flex gap-8">
+            <div className="flex gap-8 ">
               <FormField
                 control={control}
                 name="title"
@@ -258,6 +263,22 @@ export default function ProfileForm({ user }: { user: any }) {
                   </FormItem>
                 )}
               />
+
+              <FormField
+                control={control}
+                name="location"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Location</FormLabel>
+                    <FormControl>
+                      <Input {...field} className="account-form_input" />
+                    </FormControl>
+                    <FormMessage className="text-red-700" />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex gap-8">
               <FormField
                 control={control}
                 name="bio"
@@ -276,7 +297,6 @@ export default function ProfileForm({ user }: { user: any }) {
                 )}
               />
             </div>
-
             <div>
               <FormLabel className="text-[24px] font-bold mb-5 text-cyan-700">
                 Experience

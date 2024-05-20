@@ -30,6 +30,7 @@ interface User extends Document {
   cnic: string;
   phone: string;
   bio: string;
+  location: string,
   image: string;
   onboarded: boolean;
   experience: Experience[];
@@ -62,19 +63,20 @@ const projectSchema: Schema = new Schema({
 });
 
 const userSchema: Schema = new Schema({
-  id: { type: String, required: true},
-  name: { type: String,  },
+  id: { type: String, required: true },
+  name: { type: String, },
   title: { type: String, required: true },
   company: { type: String, required: true },
   ntn: { type: String, required: true },
   cnic: { type: String, required: true },
   phone: { type: String, required: true },
   bio: { type: String, required: true },
+  location: { type: String, required: true },
   image: { type: String, required: true },
-  onboarded:{
-    type:Boolean,
-    default:false
-   },
+  onboarded: {
+    type: Boolean,
+    default: false
+  },
   experience: [experienceSchema],
   certification: [certificationSchema],
   projects: [{ type: Schema.Types.ObjectId, ref: "UserProject" }],
