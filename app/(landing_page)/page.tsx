@@ -10,8 +10,10 @@ export default async function Home() {
 
   if (user) {
     const userInfo = await clerkClient.users.getUser(user.id);
+
     if (!userInfo) return null;
     const userMetadata = userInfo.privateMetadata;
+
     if (userMetadata.role === "client") {
       redirect("/posts");
     }

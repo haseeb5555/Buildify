@@ -185,7 +185,13 @@ export const C_sidebarLinks = [
 		imgURL: "/assets/user.svg",
 		route: "/cp",
 		label: "Profile",
+
 	},
+	{
+		imgURL: "/assets/user.svg",
+		route: '/windows',
+		label: 'My Rooms'
+	}
 ];
 
 export const sidebarLinks = [

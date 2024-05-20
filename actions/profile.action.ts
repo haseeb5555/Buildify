@@ -40,6 +40,7 @@ interface Params {
   cnic: string;
   phone: string;
   bio: string;
+  location: string;
   path: string;
   projects: Project[];
   experience: Experience[];
@@ -58,6 +59,7 @@ export async function createProfile(
     cnic,
     phone,
     bio,
+    location,
     experience,
     path,
     projects,
@@ -69,7 +71,22 @@ export async function createProfile(
 
 
     await connectToDB();
-
+    await Profile.create({
+      id: userId,
+      name,
+      image,
+      title,
+      company,
+      ntn,
+      cnic,
+      phone,
+      bio,
+      location,
+      experience,
+      certification,
+      projects,
+      onboarded: true,
+    });
     await Profile.findOneAndUpdate(
       { id: userId },
       {
@@ -81,6 +98,7 @@ export async function createProfile(
         cnic,
         phone,
         bio,
+        location,
         experience,
         certification,
         projects,
